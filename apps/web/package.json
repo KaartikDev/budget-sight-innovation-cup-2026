@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js && vitest run test/*.test.jsx"
   },
   "dependencies": {
     "@budgetsight/shared": "*",
@@ -17,5 +17,11 @@
     "react-router-dom": "latest",
     "remark-gfm": "^4.0.1",
     "vite": "latest"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.11"
   }
 }

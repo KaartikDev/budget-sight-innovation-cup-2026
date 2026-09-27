@@ -12,7 +12,8 @@
     "start": "npm run start -w @budgetsight/server",
     "test": "npm run test -w @budgetsight/server && npm run test -w @budgetsight/web",
     "seed-user": "npm run seed-user -w @budgetsight/server",
-    "seed-defaults": "npm run seed-defaults -w @budgetsight/server"
+    "seed-defaults": "npm run seed-defaults -w @budgetsight/server",
+    "extract:backfill": "npm run extract:backfill -w @budgetsight/server --"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"

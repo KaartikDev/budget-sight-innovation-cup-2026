@@ -1,6 +1,7 @@
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import bcrypt from "bcryptjs";
 import express from "express";
 import cookieParser from "cookie-parser";
 import multer from "multer";
@@ -16,7 +17,7 @@ import {
   tokenEnvelope,
 } from "@budgetsight/shared";
 import { config, configurationStatus } from "./config.js";
-import { authenticate, canAccessTask, login, logout, requireAdmin, requireUser } from "./auth.js";
+import { authenticate, canAccessTask, canManageTask, login, logout, requireAdmin, requireUser } from "./auth.js";
 import { audit, db, hydrateTask, json, now, parseJson, publicUser } from "./db.js";
 import { subscribe } from "./events.js";
 import { createRepository, getRepository, listRepositories, listRepositoryRoots } from "./repositories.js";
@@ -30,6 +31,9 @@ import {
   sendMessage,
   taskPaths,
 } from "./runtime.js";
+import { featureWorkerStatus, retryTurnExtraction } from "./feature-worker.js";
+import { OUTCOME_STATUSES, WORKLOAD_LABELS } from "./feature-contract.js";
+import { getCurrentReportingRow, getReportingRowVersions, listReportingRows } from "./reporting-db.js";
 
 const app = express();
 app.disable("x-powered-by");
@@ -62,6 +66,11 @@ function requireTaskAccess(req, res, next) {
   if (!canAccessTask(req.user, row)) return res.status(403).json({ error: "forbidden" });
   req.taskRow = row;
   req.task = hydrateTask(row);
+  next();
+}
+
+function requireTaskManagement(req, res, next) {
+  if (!canManageTask(req.user, req.taskRow)) return res.status(403).json({ error: "task_owner_required" });
   next();
 }
 
@@ -113,7 +122,13 @@ function sha256(filePath) {
 }
 
 app.get("/api/v1/health", (_req, res) => {
-  res.json({ ok: true, configuration: configurationStatus(), appServer: appServerStatus(), models: MODELS });
+  res.json({
+    ok: true,
+    configuration: configurationStatus(),
+    appServer: appServerStatus(),
+    featureExtraction: featureWorkerStatus(),
+    models: MODELS,
+  });
 });
 
 app.post("/api/v1/auth/login", async (req, res, next) => {
@@ -203,9 +218,7 @@ app.post("/api/v1/tasks", requireUser, (req, res, next) => {
 });
 
 app.get("/api/v1/tasks", requireUser, (req, res) => {
-  const rows = req.user.role === "admin" && req.query.all === "true"
-    ? db.prepare("SELECT * FROM tasks ORDER BY last_active_at DESC").all()
-    : db.prepare("SELECT * FROM tasks WHERE user_id=? ORDER BY last_active_at DESC").all(req.user.id);
+  const rows = db.prepare("SELECT * FROM tasks ORDER BY last_active_at DESC").all();
   res.json({ tasks: rows.map(taskView) });
 });
 
@@ -237,6 +250,7 @@ app.post(
   "/api/v1/tasks/:taskId/uploads",
   requireUser,
   requireTaskAccess,
+  requireTaskManagement,
   upload.array("files", 50),
   (req, res, next) => {
     const tempFiles = req.files || [];
@@ -273,7 +287,7 @@ app.post(
   },
 );
 
-app.post("/api/v1/tasks/:taskId/messages", requireUser, requireTaskAccess, async (req, res, next) => {
+app.post("/api/v1/tasks/:taskId/messages", requireUser, requireTaskAccess, requireTaskManagement, async (req, res, next) => {
   try {
     const input = z.object({ text: z.string().trim().min(1).max(200_000), attachmentIds: z.array(z.string().uuid()).default([]) }).parse(req.body);
     const result = await sendMessage(req.task.id, req.user, input.text, input.attachmentIds);
@@ -283,7 +297,7 @@ app.post("/api/v1/tasks/:taskId/messages", requireUser, requireTaskAccess, async
   }
 });
 
-app.post("/api/v1/tasks/:taskId/cancel", requireUser, requireTaskAccess, async (req, res, next) => {
+app.post("/api/v1/tasks/:taskId/cancel", requireUser, requireTaskAccess, requireTaskManagement, async (req, res, next) => {
   try {
     const reason = z.object({ reason: z.string().max(200).optional() }).parse(req.body || {}).reason;
     res.json({ task: await cancelTask(req.task.id, req.user, reason) });
@@ -292,7 +306,7 @@ app.post("/api/v1/tasks/:taskId/cancel", requireUser, requireTaskAccess, async (
   }
 });
 
-app.patch("/api/v1/tasks/:taskId/budget", requireUser, requireTaskAccess, (req, res, next) => {
+app.patch("/api/v1/tasks/:taskId/budget", requireUser, requireTaskAccess, requireTaskManagement, (req, res, next) => {
   try {
     const input = z.object({ budgetUsd: z.coerce.number().positive().max(10_000), reason: z.string().max(500).optional() }).parse(req.body);
     const task = increaseBudget(req.task.id, req.user, budgetUsdToMicros(input.budgetUsd), input.reason);
@@ -404,8 +418,41 @@ app.get("/api/v1/tasks/:taskId/session", requireUser, requireTaskAccess, async (
 });
 
 app.get("/api/v1/admin/users", requireAdmin, (_req, res) => {
-  const users = db.prepare("SELECT * FROM users ORDER BY display_name").all().map(publicUser);
+  const users = db.prepare(`
+    SELECT u.*,COUNT(t.id) AS thread_count,COALESCE(SUM(t.estimated_cost_micros),0) AS estimated_spend_micros
+    FROM users u LEFT JOIN tasks t ON t.user_id=u.id
+    GROUP BY u.id ORDER BY u.display_name COLLATE NOCASE
+  `).all().map((row) => ({
+    ...publicUser(row),
+    createdAt: row.created_at,
+    threadCount: Number(row.thread_count),
+    estimatedSpendUsd: Number(row.estimated_spend_micros) / 1_000_000,
+  }));
   res.json({ users });
+});
+
+app.post("/api/v1/admin/users", requireAdmin, async (req, res, next) => {
+  try {
+    const input = z.object({
+      name: z.string().trim().min(2).max(80),
+      username: z.string().trim().toLowerCase().regex(/^[a-z0-9][a-z0-9._-]{2,31}$/),
+      password: z.string().min(10).max(128),
+      role: z.enum(["user", "admin"]).default("user"),
+    }).parse(req.body);
+    if (db.prepare("SELECT 1 FROM users WHERE username=? COLLATE NOCASE").get(input.username)) {
+      return res.status(409).json({ error: "username_taken", message: "That username is already in use." });
+    }
+    const id = crypto.randomUUID();
+    const createdAt = now();
+    const passwordHash = await bcrypt.hash(input.password, 12);
+    db.prepare("INSERT INTO users(id,display_name,username,password_hash,role,created_at) VALUES(?,?,?,?,?,?)")
+      .run(id, input.name, input.username, passwordHash, input.role, createdAt);
+    const user = publicUser(db.prepare("SELECT * FROM users WHERE id=?").get(id));
+    audit({ userId: req.user.id, action: "user.create", detail: { createdUserId: id, username: user.username, role: user.role } });
+    res.status(201).json({ user: { ...user, createdAt, threadCount: 0, estimatedSpendUsd: 0 } });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.get("/api/v1/admin/tasks", requireAdmin, (req, res) => {
@@ -418,6 +465,63 @@ app.get("/api/v1/admin/tasks", requireAdmin, (req, res) => {
   if (req.query.to) { clauses.push("created_at<=?"); values.push(req.query.to); }
   const sql = `SELECT * FROM tasks ${clauses.length ? `WHERE ${clauses.join(" AND ")}` : ""} ORDER BY last_active_at DESC LIMIT 500`;
   res.json({ tasks: db.prepare(sql).all(...values).map(taskView) });
+});
+
+app.get("/api/v1/admin/reporting/turns", requireAdmin, (req, res, next) => {
+  try {
+    const filters = z.object({
+      q: z.string().trim().max(100).optional(),
+      userId: z.string().optional(),
+      repositoryId: z.string().optional(),
+      environmentKey: z.string().optional(),
+      workload: z.enum(WORKLOAD_LABELS).optional(),
+      outcome: z.enum(OUTCOME_STATUSES).optional(),
+      runtimeStatus: z.string().optional(),
+      semanticStatus: z.enum(["pending", "ready", "failed"]).optional(),
+      from: z.string().datetime().optional(),
+      to: z.string().datetime().optional(),
+      cursor: z.coerce.number().int().positive().optional(),
+      limit: z.coerce.number().int().min(1).max(100).optional(),
+    }).parse(req.query);
+    res.json(listReportingRows(filters));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/v1/admin/reporting/turns/:turnId", requireAdmin, (req, res) => {
+  if (req.query.versions === "true") {
+    const versions = getReportingRowVersions(req.params.turnId);
+    if (!versions.length) return res.status(404).json({ error: "reporting_turn_not_found" });
+    return res.json({ versions });
+  }
+  const result = getCurrentReportingRow(req.params.turnId);
+  if (!result) return res.status(404).json({ error: "reporting_turn_not_found" });
+  return res.json(result);
+});
+
+app.post("/api/v1/admin/reporting/turns/:turnId/retry", requireAdmin, (req, res, next) => {
+  try {
+    const job = retryTurnExtraction(req.params.turnId);
+    if (!job) return res.status(404).json({ error: "reporting_turn_not_found" });
+    audit({
+      userId: req.user.id,
+      taskId: job.task_id,
+      action: "feature_extraction.retry",
+      detail: { turnId: req.params.turnId, extractorVersion: job.extractor_version },
+    });
+    return res.status(202).json({
+      job: {
+        turnId: job.turn_id,
+        extractorVersion: job.extractor_version,
+        state: job.state,
+        attemptCount: Number(job.attempt_count || 0),
+        availableAt: job.available_at,
+      },
+    });
+  } catch (error) {
+    return next(error);
+  }
 });
 
 app.use((error, _req, res, _next) => {

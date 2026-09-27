@@ -4,8 +4,10 @@ import express from "express";
 import { app } from "./app.js";
 import { config, configurationStatus } from "./config.js";
 import { reconcileRuntimes } from "./runtime.js";
+import { startFeatureWorker } from "./feature-worker.js";
 
 reconcileRuntimes();
+startFeatureWorker();
 
 const webDist = path.join(config.projectRoot, "apps/web/dist");
 if (fs.existsSync(webDist)) {

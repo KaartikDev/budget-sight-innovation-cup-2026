@@ -14,9 +14,21 @@ import {
 } from "@budgetsight/shared";
 import { config } from "./config.js";
 import { codexAppServer } from "./codex-app-server.js";
-import { db, hydrateTask, json, now, parseJson, audit } from "./db.js";
+import { db, hydrateTask, json, now, parseJson, audit, withTransaction } from "./db.js";
 import { publish } from "./events.js";
 import { repositorySnapshot } from "./repositories.js";
+import { storeAgentEvent } from "./event-store.js";
+import {
+  ensureTurnRecord,
+  linkMessageToTurn,
+  linkRepoSnapshotToTurn,
+  markActiveTurnsOrphaned,
+  projectTurnCompleted,
+  projectTurnStarted,
+  projectTurnUsage,
+  rebuildTurnIndexFromEvents,
+} from "./turn-projector.js";
+import { enqueueTurnExtraction } from "./feature-worker.js";
 
 function taskRow(id) {
   return db.prepare("SELECT * FROM tasks WHERE id=?").get(id);
@@ -43,12 +55,13 @@ function emitLocal(taskId, type, data = {}) {
   return payload;
 }
 
-function saveRepoSnapshot(task, phase, turnId = null) {
+function saveRepoSnapshot(task, phase, turnId = null, capturedSnapshot = null) {
   if (!task?.repository?.path) return;
-  const snapshot = repositorySnapshot(task.repository.path);
-  db.prepare(
+  const snapshot = capturedSnapshot || repositorySnapshot(task.repository.path);
+  const result = db.prepare(
     "INSERT INTO repo_snapshots(task_id,phase,turn_id,raw_json,created_at) VALUES(?,?,?,?,?)",
   ).run(task.id, phase, turnId, json(snapshot), now());
+  return Number(result.lastInsertRowid);
 }
 
 const USAGE_FIELDS = [
@@ -206,21 +219,6 @@ function taskForThread(threadId) {
   return hydrateTask(db.prepare("SELECT * FROM tasks WHERE openai_session_id=?").get(threadId));
 }
 
-function storeEvent(task, message) {
-  const method = message.method || "unknown";
-  const params = message.params || {};
-  const turnId = params.turnId || params.turn?.id || null;
-  const item = params.item || null;
-  const payload = { type: method, method, ...params };
-  const createdAt = now();
-  db.prepare(`
-    INSERT INTO agent_events(task_id,upstream_id,event_type,turn_id,raw_json,created_at)
-    VALUES(?,?,?,?,?,?)
-  `).run(task.id, item?.id || null, method, turnId, json(payload), createdAt);
-  publish(task.id, { ...payload, localCreatedAt: createdAt });
-  return { method, params, turnId, item, createdAt };
-}
-
 async function handleCodexMessage(message) {
   const params = message.params || {};
   const threadId = params.threadId || params.thread?.id;
@@ -237,62 +235,91 @@ async function handleCodexMessage(message) {
   }
   let task = taskForThread(threadId);
   if (!task) return;
-  const event = storeEvent(task, message);
+  const terminal = ["turn/completed", "error"].includes(message.method);
+  const capturedSnapshot = terminal && task.repository?.path
+    ? repositorySnapshot(task.repository.path)
+    : null;
+  const normalizedMessage = message.method === "error" && !params.turnId && task.activeTurnId
+    ? { ...message, params: { ...params, turnId: task.activeTurnId } }
+    : message;
 
-  if (event.method === "turn/started") {
-    db.prepare(`
-      UPDATE tasks SET status='running', active_turn_id=?, started_at=COALESCE(started_at,?),
-        finished_at=NULL, last_active_at=? WHERE id=?
-    `).run(event.turnId, event.createdAt, event.createdAt, task.id);
-  }
+  // Event persistence, turn projection, and terminal-job enqueueing are one
+  // operational transaction. Reporting remains a separate idempotent write.
+  const event = withTransaction(() => {
+    const stored = storeAgentEvent(task.id, normalizedMessage);
+    if (stored.duplicate) return stored;
 
-  if (event.method === "thread/tokenUsage/updated") {
-    const usage = params.tokenUsage;
-    if (usage?.total) {
-      task = getTask(task.id);
-      const state = saveUsage(task, event.method, usage);
-      await interruptForBudget(getTask(task.id), state);
+    if (stored.method === "turn/started") {
+      db.prepare(`
+        UPDATE tasks SET status='running', active_turn_id=?, started_at=COALESCE(started_at,?),
+          finished_at=NULL, last_active_at=? WHERE id=?
+      `).run(stored.turnId, stored.createdAt, stored.createdAt, task.id);
+      projectTurnStarted(getTask(task.id), stored);
     }
+
+    if (stored.method === "thread/tokenUsage/updated" && stored.params.tokenUsage?.total) {
+      projectTurnUsage(stored.turnId, stored.params.tokenUsage);
+    }
+
+    if (stored.method === "item/completed" && stored.item?.type === "agentMessage" && stored.item.text) {
+      const exists = db.prepare("SELECT id FROM messages WHERE id=?").get(stored.item.id);
+      if (!exists) {
+        db.prepare("INSERT INTO messages(id,task_id,turn_id,role,text,raw_json,created_at) VALUES(?,?,?,?,?,?,?)")
+          .run(stored.item.id, task.id, stored.turnId, "assistant", stored.item.text, json(stored.item), stored.createdAt);
+      }
+    }
+
+    if (stored.method === "turn/completed") {
+      const status = stored.params.turn?.status || "completed";
+      const current = getTask(task.id);
+      let nextStatus = "idle_completed";
+      let reason = null;
+      if (status === "failed") { nextStatus = "failed"; reason = stored.params.turn?.error?.message || "turn_failed"; }
+      if (status === "interrupted" && current.status === "budget_interrupted") {
+        nextStatus = "budget_interrupted";
+        reason = current.interruptionReason || "budget_limit";
+      } else if (status === "interrupted") {
+        nextStatus = "user_interrupted";
+        reason = current.interruptionReason || "user_requested";
+      }
+      db.prepare(`
+        UPDATE tasks SET status=?, active_turn_id=NULL, last_turn_outcome=?, interruption_reason=?,
+          finished_at=?, last_active_at=? WHERE id=?
+      `).run(nextStatus, status, reason, stored.createdAt, stored.createdAt, task.id);
+      const afterSnapshotId = saveRepoSnapshot(getTask(task.id), "after_turn", stored.turnId, capturedSnapshot);
+      projectTurnCompleted(getTask(task.id), stored, status, reason, afterSnapshotId);
+      enqueueTurnExtraction(task.id, stored.turnId);
+    }
+
+    if (stored.method === "error") {
+      const failedTurnId = stored.turnId || task.activeTurnId;
+      const reason = stored.params.error?.message || "codex_error";
+      db.prepare(`
+        UPDATE tasks SET status='failed', active_turn_id=NULL, last_turn_outcome='failed',
+          interruption_reason=?, finished_at=?, last_active_at=? WHERE id=?
+      `).run(reason, stored.createdAt, stored.createdAt, task.id);
+      const afterSnapshotId = saveRepoSnapshot(getTask(task.id), "after_failure", failedTurnId, capturedSnapshot);
+      if (failedTurnId) {
+        projectTurnCompleted(getTask(task.id), { ...stored, turnId: failedTurnId }, "failed", reason, afterSnapshotId);
+        enqueueTurnExtraction(task.id, failedTurnId);
+      }
+    }
+    return stored;
+  });
+
+  if (event.duplicate) return;
+  publish(task.id, { ...event.payload, localCreatedAt: event.createdAt });
+
+  if (event.method === "thread/tokenUsage/updated" && event.params.tokenUsage?.total) {
+    task = getTask(task.id);
+    const state = saveUsage(task, event.method, event.params.tokenUsage);
+    await interruptForBudget(getTask(task.id), state);
   }
 
   if (event.method === "item/completed" && billableToolKind(event.item)) {
     task = getTask(task.id);
     const state = saveToolUsage(task);
     await interruptForBudget(getTask(task.id), state);
-  }
-
-  if (event.method === "item/completed" && event.item?.type === "agentMessage" && event.item.text) {
-    const exists = db.prepare("SELECT id FROM messages WHERE id=?").get(event.item.id);
-    if (!exists) {
-      db.prepare("INSERT INTO messages(id,task_id,role,text,raw_json,created_at) VALUES(?,?,?,?,?,?)")
-        .run(event.item.id, task.id, "assistant", event.item.text, json(event.item), event.createdAt);
-    }
-  }
-
-  if (event.method === "turn/completed") {
-    const status = params.turn?.status || "completed";
-    const current = getTask(task.id);
-    let nextStatus = "idle_completed";
-    let reason = null;
-    if (status === "failed") { nextStatus = "failed"; reason = params.turn?.error?.message || "turn_failed"; }
-    if (status === "interrupted" && current.status === "budget_interrupted") {
-      nextStatus = "budget_interrupted";
-      reason = current.interruptionReason || "budget_limit";
-    }
-    else if (status === "interrupted") { nextStatus = "user_interrupted"; reason = current.interruptionReason || "user_requested"; }
-    db.prepare(`
-      UPDATE tasks SET status=?, active_turn_id=NULL, last_turn_outcome=?, interruption_reason=?,
-        finished_at=?, last_active_at=? WHERE id=?
-    `).run(nextStatus, status, reason, event.createdAt, event.createdAt, task.id);
-    saveRepoSnapshot(getTask(task.id), "after_turn", event.turnId);
-  }
-
-  if (event.method === "error") {
-    db.prepare(`
-      UPDATE tasks SET status='failed', active_turn_id=NULL, last_turn_outcome='failed',
-        interruption_reason=?, finished_at=?, last_active_at=? WHERE id=?
-    `).run(params.error?.message || "codex_error", event.createdAt, event.createdAt, task.id);
-    saveRepoSnapshot(getTask(task.id), "after_failure", event.turnId);
   }
 }
 
@@ -360,8 +387,9 @@ export async function sendMessage(taskId, user, text, attachmentIds = []) {
     ? db.prepare(`SELECT id,relative_path,absolute_path FROM uploads WHERE task_id=? AND id IN (${attachmentIds.map(() => "?").join(",")})`).all(task.id, ...attachmentIds)
     : [];
   const messageId = crypto.randomUUID();
-  db.prepare("INSERT INTO messages(id,task_id,role,text,raw_json,created_at) VALUES(?,?,?,?,?,?)")
-    .run(messageId, task.id, "user", text, json({ attachmentIds }), now());
+  const activeMessageTurnId = task.status === "running" ? task.activeTurnId : null;
+  db.prepare("INSERT INTO messages(id,task_id,turn_id,role,text,raw_json,created_at) VALUES(?,?,?,?,?,?,?)")
+    .run(messageId, task.id, activeMessageTurnId, "user", text, json({ attachmentIds }), now());
   audit({ userId: user.id, taskId: task.id, action: "thread.message", detail: { messageId, attachmentIds } });
 
   task = await ensureCodexThread(task);
@@ -370,7 +398,7 @@ export async function sendMessage(taskId, user, text, attachmentIds = []) {
     await codexAppServer.steerTurn(task.codexThreadId, task.activeTurnId, input);
     emitLocal(task.id, "budgetsight.turn.steered", { messageId, turnId: task.activeTurnId });
   } else {
-    saveRepoSnapshot(task, "before_turn");
+    const beforeSnapshotId = saveRepoSnapshot(task, "before_turn");
     db.prepare("UPDATE tasks SET status='connecting', finished_at=NULL, last_active_at=? WHERE id=?").run(now(), task.id);
     const result = await codexAppServer.startTurn(task.codexThreadId, input, {
       cwd: task.repository.path,
@@ -378,8 +406,16 @@ export async function sendMessage(taskId, user, text, attachmentIds = []) {
       effort: "medium",
     });
     const turnId = result.turn?.id;
-    db.prepare("UPDATE tasks SET status='running', active_turn_id=?, started_at=COALESCE(started_at,?), last_active_at=? WHERE id=?")
-      .run(turnId || null, now(), now(), task.id);
+    withTransaction(() => {
+      const startedAt = now();
+      db.prepare("UPDATE tasks SET status='running', active_turn_id=?, started_at=COALESCE(started_at,?), last_active_at=? WHERE id=?")
+        .run(turnId || null, startedAt, startedAt, task.id);
+      if (turnId) {
+        ensureTurnRecord(getTask(task.id), turnId, { beforeRepoSnapshotId: beforeSnapshotId, startedAt });
+        linkMessageToTurn(messageId, turnId);
+        linkRepoSnapshotToTurn(beforeSnapshotId, turnId);
+      }
+    });
     emitLocal(task.id, "budgetsight.turn.started", { messageId, turnId });
   }
   snapshotRateLimits(task.id);
@@ -510,13 +546,21 @@ export function repriceStoredUsage() {
 
 export function reconcileRuntimes() {
   repriceStoredUsage();
-  const active = db.prepare("SELECT * FROM tasks WHERE status IN ('connecting','running')").all().map(hydrateTask);
-  for (const task of active) {
-    db.prepare(`
-      UPDATE tasks SET status='user_interrupted', interruption_reason='server_restarted',
-        last_turn_outcome='unknown', active_turn_id=NULL, finished_at=?, last_active_at=? WHERE id=?
-    `).run(now(), now(), task.id);
-  }
+  rebuildTurnIndexFromEvents();
+  withTransaction(() => {
+    const orphanedTurnIds = markActiveTurnsOrphaned();
+    const active = db.prepare("SELECT * FROM tasks WHERE status IN ('connecting','running')").all().map(hydrateTask);
+    for (const task of active) {
+      db.prepare(`
+        UPDATE tasks SET status='user_interrupted', interruption_reason='server_restarted',
+          last_turn_outcome='unknown', active_turn_id=NULL, finished_at=?, last_active_at=? WHERE id=?
+      `).run(now(), now(), task.id);
+    }
+    for (const turnId of orphanedTurnIds) {
+      const row = db.prepare("SELECT task_id FROM task_turns WHERE turn_id=?").get(turnId);
+      if (row) enqueueTurnExtraction(row.task_id, turnId);
+    }
+  });
   const legacyBudgetStops = db.prepare("SELECT * FROM tasks WHERE status='budget_interrupted'").all().map(hydrateTask);
   for (const task of legacyBudgetStops) {
     const state = budgetState(task.model, task.budgetMicros, task.usage, {

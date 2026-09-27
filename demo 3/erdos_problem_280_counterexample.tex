@@ -1,0 +1,86 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+
+\newtheorem*{theorem}{Theorem}
+
+\title{An Explicit Counterexample to Erd\H{o}s Problem 280}
+\author{}
+\date{26 September 2026}
+
+\begin{document}
+\maketitle
+
+\noindent\textbf{Provenance.}
+This is an exposition and independent verification of a counterexample
+already observed by Stijn Cambie and recorded by T.~F. Bloom in
+\href{https://www.erdosproblems.com/280}{Erd\H{o}s Problem 280}.
+It is not a claim of a new resolution of an open problem.
+
+\medskip
+\noindent\textbf{Question.}
+Suppose $n_1<n_2<\cdots$ are positive integers and a residue class
+$a_i\pmod{n_i}$ is chosen for every $i$. If for some $\varepsilon>0$
+\begin{equation}\label{eq:growth}
+ n_k>(1+\varepsilon)k\log k\qquad(k\geq 1),
+\end{equation}
+must the number of integers $0\leq m<n_k$ avoiding the first $k$
+residue classes fail to be $o(k)$? The answer is no.
+
+\begin{theorem}
+Take
+\[
+ n_i=2^i,\qquad a_i=1+2^{i-1}\pmod{2^i}\qquad(i\geq1).
+\]
+Condition \eqref{eq:growth} holds with $\varepsilon=1$, but for every
+$k\geq1$ one has
+\[
+ \#\bigl\{0\leq m<2^k:\;
+       m\not\equiv a_i\pmod{2^i}\text{ for }1\leq i\leq k\bigr\}=1.
+\]
+Consequently this count is $o(k)$.
+\end{theorem}
+
+\begin{proof}
+First, the moduli are strictly increasing. We check the numerical
+growth condition without using an asymptotic estimate. For every
+integer $k\geq2$, $\log k<k/2$: the function $x/2-\log x$ is positive
+at $x=2$ and nondecreasing for $x\geq2$. Also $2^k\geq k^2$ for
+$k\geq4$. Equality holds at $k=4$; the induction step follows from
+$2k^2\geq(k+1)^2$ for $k\geq4$. Hence, for $k\geq4$,
+\[
+ 2k\log k<k^2\leq2^k.
+\]
+The same strict inequality $2k\log k<2^k$ is immediate for
+$k=1,2,3$. Thus \eqref{eq:growth} holds for $\varepsilon=1$.
+
+Next, $m=1$ avoids every listed class, since
+$a_i-1=2^{i-1}$ is not divisible by $2^i$.
+If $0\leq m<2^k$ and $m\ne1$, let $t=v_2(m-1)$, the exponent of $2$
+in the nonzero integer $m-1$ (this also makes sense when $m=0$).
+Then $t\leq k-1$: this is clear for $m=0$, and otherwise
+$1\leq m-1\leq2^k-2$. By the definition of $v_2$, we may write
+$m-1=2^t u$ with $u$ odd, so
+\[
+ m\equiv1+2^t=a_{t+1}\pmod{2^{t+1}}.
+\]
+The index $t+1$ lies among $1,\ldots,k$. Therefore every $m$ in
+$[0,2^k)$ except $1$ is covered by one of the first $k$ classes.
+The uncovered count is exactly $1$, and $1/k\to0$.
+\end{proof}
+
+\paragraph{Why the construction works.}
+The first $k$ congruence classes partition the residues modulo $2^k$
+other than the residue $1$: the $i$th class consists exactly of those
+integers for which $v_2(m-1)=i-1$. The one missing residue persists
+while the moduli grow exponentially.
+
+\paragraph{Source.}
+P.~Erd\H{o}s and R.~L. Graham, \emph{Old and New Problems and Results
+in Combinatorial Number Theory}, 1980, p.~29; problem statement and
+Cambie's counterexample recorded by T.~F. Bloom,
+\href{https://www.erdosproblems.com/280}{Erd\H{o}s Problem 280}.
+
+\end{document}

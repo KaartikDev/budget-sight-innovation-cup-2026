@@ -63,5 +63,9 @@ export function requireAdmin(req, res, next) {
 }
 
 export function canAccessTask(user, taskRow) {
+  return Boolean(user && taskRow);
+}
+
+export function canManageTask(user, taskRow) {
   return Boolean(user && taskRow && (user.role === "admin" || taskRow.user_id === user.id));
 }

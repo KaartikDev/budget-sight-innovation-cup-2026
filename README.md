@@ -7,12 +7,14 @@ BudgetSight is a local-first product UI and audit layer for Codex app-server thr
 - Node.js 24+
 - A `codex` executable that supports `app-server`
 - An existing Codex login (`codex login status`)
+- [Ollama](https://ollama.com/) with `qwen3:4b-instruct` for semantic turn features (deterministic drafts work without it)
 
 ## Setup
 
 ```bash
 cp .env.example .env
 npm install
+ollama pull qwen3:4b-instruct
 npm run seed-defaults
 npm run dev
 ```
@@ -25,6 +27,11 @@ The local demo accounts are:
 
 - Administrator: `admin` / `admin12345`
 - Regular user: `demo` / `demo12345`
+- Maya Chen: `maya.chen` / `Cedar!Sky27`
+- Jordan Patel: `jordan.patel` / `Harbor!Mint42`
+- Sofia Ramirez: `sofia.ramirez` / `Quartz!Lake56`
+- Liam O'Connor: `liam.oconnor` / `Maple!River38`
+- Aisha Thompson: `aisha.thompson` / `Nova!Field64`
 
 These credentials are intended only for local development. Use `npm run seed-user`
 to replace them with your own accounts before exposing the app to a network.
@@ -41,6 +48,52 @@ npm start
 ```
 
 Then open `http://localhost:4310`.
+
+## Turn feature extraction
+
+Every terminal Codex turn is projected into a complete, versioned reporting row.
+The deterministic draft is written even when Ollama is offline; Ollama classifies
+the compact `workload`, per-tool `actions`, `failures`, and `outcome` extension.
+The service then derives one structured `observations` object containing the most
+repeated tool-call intent, its count, confidence, and evidence. Feature extraction
+runs after the Codex turn and never blocks or changes the turn result.
+
+Workloads use a controlled taxonomy: `code_generation`, `debugging`, `testing`,
+`repo_exploration`, `web_research`, `artifact_generation`, `environment_setup`,
+`deployment_operations`, `analysis_planning`, `other`, and `unknown`. Tool intents
+use `repo_exploration`, `code_search`, `file_reading`, `code_editing`,
+`test_validation`, `command_execution`, `environment_inspection`,
+`dependency_setup`, `web_searching`, `version_control`, `artifact_inspection`, and
+`other`.
+
+Operational events, explicit turn boundaries, and durable extraction jobs live in
+`DATA_DIR/budgetsight.db`. Immutable row versions live in the separate
+`REPORTING_DB_PATH` SQLite database. `current_turn_feature_rows` exposes the latest
+version for each turn. Reporting rows contain hashes and normalized metadata, not
+raw prompts, assistant messages, full commands, or command output.
+
+Backfill existing turns with:
+
+```bash
+npm run extract:backfill
+npm run extract:backfill -- --task-id <task-id> --limit 100
+npm run extract:backfill -- --turn-id <turn-id>
+npm run extract:backfill -- --failed-only
+```
+
+Backfills are resumable and idempotent. Ollama outages leave schema-valid draft
+rows current and move semantic jobs into `waiting_for_ollama`; the worker retries
+without affecting Codex. Extraction lifecycle and failure events are appended as
+JSON Lines to `FEATURE_EXTRACTION_LOG_PATH` (default:
+`DATA_DIR/feature-extraction.log`). Admin-only reporting endpoints are:
+
+- `GET /api/v1/admin/reporting/turns`
+- `GET /api/v1/admin/reporting/turns/:turnId`
+- `GET /api/v1/admin/reporting/turns/:turnId?versions=true`
+- `POST /api/v1/admin/reporting/turns/:turnId/retry`
+
+`GET /api/v1/health` includes worker, model-readiness, circuit-breaker, and job
+counts. Set `FEATURE_EXTRACTION_ENABLED=false` to disable automatic extraction.
 
 ## Important security note
 

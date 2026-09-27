@@ -8,7 +8,8 @@
     "start": "node src/index.js",
     "test": "node --test test/*.test.js",
     "seed-user": "node src/seed-user.js",
-    "seed-defaults": "node src/seed-defaults.js"
+    "seed-defaults": "node src/seed-defaults.js",
+    "extract:backfill": "node src/backfill-features.js"
   },
   "dependencies": {
     "@budgetsight/shared": "*",

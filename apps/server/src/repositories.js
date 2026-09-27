@@ -36,7 +36,6 @@ function walk(root, depth, found) {
   }
   if (isGitRepo(canonical)) {
     found.add(canonical);
-    return;
   }
   if (depth <= 0) return;
   let entries = [];
@@ -46,7 +45,7 @@ function walk(root, depth, found) {
     return;
   }
   for (const entry of entries) {
-    if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+    if (!entry.isDirectory() || entry.name.startsWith(".") || ["node_modules", "vendor", "dist", "build"].includes(entry.name)) continue;
     walk(path.join(canonical, entry.name), depth - 1, found);
   }
 }

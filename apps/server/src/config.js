@@ -49,8 +49,14 @@ export const config = Object.freeze({
   webOrigin: process.env.WEB_ORIGIN || "http://localhost:5173",
   sessionSecret: process.env.SESSION_SECRET || "local-development-only-change-me",
   dataDir: path.resolve(projectRoot, process.env.DATA_DIR || "data"),
+  reportingDbPath: path.resolve(projectRoot, process.env.REPORTING_DB_PATH || path.join(process.env.DATA_DIR || "data", "reporting.db")),
   repoRoots: splitPaths(process.env.REPO_ROOTS || projectRoot),
   codexExecutable: resolveCodexExecutable(),
+  featureExtractionEnabled: process.env.FEATURE_EXTRACTION_ENABLED !== "false",
+  ollamaBaseUrl: String(process.env.OLLAMA_BASE_URL || "http://127.0.0.1:11434").replace(/\/$/, ""),
+  featureExtractorModel: process.env.FEATURE_EXTRACTOR_MODEL || "qwen3:4b-instruct",
+  featureExtractorTimeoutMs: Number(process.env.FEATURE_EXTRACTOR_TIMEOUT_MS || 30_000),
+  featureExtractionLogPath: path.resolve(projectRoot, process.env.FEATURE_EXTRACTION_LOG_PATH || path.join(process.env.DATA_DIR || "data", "feature-extraction.log")),
   isProduction: process.env.NODE_ENV === "production",
 });
 
@@ -59,5 +65,11 @@ export function configurationStatus() {
     runtime: "codex_app_server",
     sessionSecretIsDefault: config.sessionSecret === "local-development-only-change-me",
     repoRoots: config.repoRoots,
+    featureExtraction: {
+      enabled: config.featureExtractionEnabled,
+      model: config.featureExtractorModel,
+      reportingDbPath: config.reportingDbPath,
+      logPath: config.featureExtractionLogPath,
+    },
   };
 }

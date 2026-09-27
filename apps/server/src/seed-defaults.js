@@ -15,6 +15,36 @@ const accounts = [
     password: "demo12345",
     role: "user",
   },
+  {
+    name: "Maya Chen",
+    username: "maya.chen",
+    password: "Cedar!Sky27",
+    role: "user",
+  },
+  {
+    name: "Jordan Patel",
+    username: "jordan.patel",
+    password: "Harbor!Mint42",
+    role: "user",
+  },
+  {
+    name: "Sofia Ramirez",
+    username: "sofia.ramirez",
+    password: "Quartz!Lake56",
+    role: "user",
+  },
+  {
+    name: "Liam O'Connor",
+    username: "liam.oconnor",
+    password: "Maple!River38",
+    role: "user",
+  },
+  {
+    name: "Aisha Thompson",
+    username: "aisha.thompson",
+    password: "Nova!Field64",
+    role: "user",
+  },
 ];
 
 for (const account of accounts) {
