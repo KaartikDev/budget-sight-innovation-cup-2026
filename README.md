@@ -95,6 +95,9 @@ JSON Lines to `FEATURE_EXTRACTION_LOG_PATH` (default:
 `GET /api/v1/health` includes worker, model-readiness, circuit-breaker, and job
 counts. Set `FEATURE_EXTRACTION_ENABLED=false` to disable automatic extraction.
 
+For a user-facing explanation of the admin Insights page, its charts, opportunity
+rules, and data-confidence signals, see [Insights documentation](docs/INSIGHTS.md).
+
 ## Important security note
 
 BudgetSight starts one local Codex app-server process and creates persistent Codex

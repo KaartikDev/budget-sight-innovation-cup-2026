@@ -1,3 +1,31 @@
+# Orbit issue tracker
+
+Orbit is a zero-dependency Jira-style web app in `jira_app/`. It includes accounts,
+project membership and roles, issue keys and CRUD, a draggable Kanban board,
+backlog and sprints, comments and activity, search and filters, and an overview
+dashboard. Data is stored in SQLite.
+
+```sh
+python3 jira_app/server.py --port 8080
+```
+
+Open `http://127.0.0.1:8080`, create an account, and create a project. To use a
+different data file, pass `--database /path/to/orbit.sqlite3`. The default
+database is `jira_app/jira.sqlite3`. Run `python3 -m unittest discover -s tests -q`
+to check the backend and the existing repository tools.
+
+The server binds to localhost by default. For a shared deployment, put it behind
+an HTTPS reverse proxy, pass `--host` for the appropriate bind interface, set
+`ORBIT_SECURE_COOKIE=1`, and back up the SQLite database. New users can register
+with an email and password; a project admin can then add their account to a
+project by email. Project data is only visible to members.
+
+Orbit is an initial self-hosted product, not a complete Jira replacement. It
+does not yet include attachments, notifications, audit administration, custom
+workflows, SSO, automation, or enterprise operational controls.
+
+---
+
 # Static site generator
 
 `static_site.py` builds a Markdown site with Python 3.10+ and no third-party packages. The bundled example is ready to build:

@@ -21,11 +21,17 @@ process.env.FEATURE_EXTRACTION_ENABLED = "true";
 const { db, json } = await import("../src/db.js");
 const { reportingDb, appendReportingRow, getCurrentReportingRow, getReportingRowVersions, listReportingRows } = await import("../src/reporting-db.js");
 const { buildTurnFeatureRow, mergeSemanticExtension } = await import("../src/feature-builder.js");
-const { TurnFeatureRowSchema } = await import("../src/feature-contract.js");
+const { TurnFeatureRowSchema, WorkloadLabelSchema } = await import("../src/feature-contract.js");
 const { extractSemanticFeatures } = await import("../src/ollama-feature-extractor.js");
 const { enqueueTurnExtraction, processNextFeatureJob, retryTurnExtraction } = await import("../src/feature-worker.js");
 const { storeAgentEvent } = await import("../src/event-store.js");
 const { app } = await import("../src/app.js");
+
+test("workload schema accepts safe custom identifiers", () => {
+  assert.equal(WorkloadLabelSchema.parse("security_review"), "security_review");
+  assert.throws(() => WorkloadLabelSchema.parse("Security review"));
+  assert.throws(() => WorkloadLabelSchema.parse("../unsafe"));
+});
 
 const userId = crypto.randomUUID();
 const taskId = crypto.randomUUID();
@@ -253,6 +259,9 @@ test("reporting rows are immutable, current, filterable versions", () => {
   const listing = listReportingRows({ workload: "debugging", outcome: "completed", limit: 10 });
   assert.equal(listing.rows.length, 1);
   assert.equal(listing.rows[0].row.identity.turnId, turnId);
+  assert.equal(listReportingRows({ model: "gpt-6-sol" }).rows.length, 1);
+  assert.equal(listReportingRows({ model: "gpt-6-luna" }).rows.length, 0);
+  assert.equal(listReportingRows({ from: "2026-09-27T00:00:00.000Z" }).rows.length, 0);
   assert.equal(listReportingRows({ q: "Feature Tester" }).rows.length, 1);
   assert.equal(listReportingRows({ q: "does-not-exist" }).rows.length, 0);
   const storedJson = reportingDb.prepare("SELECT row_json FROM turn_feature_rows").all().map((row) => row.row_json).join("\n");
@@ -272,6 +281,8 @@ test("admin reporting endpoints expose current and historical complete rows", as
   await agent.post("/api/v1/auth/login").send({ username: "features", password: "password" }).expect(200);
   const listing = await agent.get("/api/v1/admin/reporting/turns").query({ workload: "debugging", limit: 10 }).expect(200);
   assert.equal(listing.body.rows[0].row.identity.turnId, turnId);
+  const scoped = await agent.get("/api/v1/admin/reporting/turns").query({ model: "gpt-6-sol", from: "2026-09-26T00:00:00.000Z", to: "2026-09-27T00:00:00.000Z" }).expect(200);
+  assert.equal(scoped.body.rows.length, 1);
   const searched = await agent.get("/api/v1/admin/reporting/turns").query({ q: "repo" }).expect(200);
   assert.equal(searched.body.rows.length, 1);
   const current = await agent.get(`/api/v1/admin/reporting/turns/${turnId}`).expect(200);

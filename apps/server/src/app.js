@@ -32,8 +32,9 @@ import {
   taskPaths,
 } from "./runtime.js";
 import { featureWorkerStatus, retryTurnExtraction } from "./feature-worker.js";
-import { OUTCOME_STATUSES, WORKLOAD_LABELS } from "./feature-contract.js";
+import { OUTCOME_STATUSES, WorkloadLabelSchema } from "./feature-contract.js";
 import { getCurrentReportingRow, getReportingRowVersions, listReportingRows } from "./reporting-db.js";
+import { getReportingInsights } from "./reporting-insights.js";
 
 const app = express();
 app.disable("x-powered-by");
@@ -474,7 +475,8 @@ app.get("/api/v1/admin/reporting/turns", requireAdmin, (req, res, next) => {
       userId: z.string().optional(),
       repositoryId: z.string().optional(),
       environmentKey: z.string().optional(),
-      workload: z.enum(WORKLOAD_LABELS).optional(),
+      model: z.enum(MODELS).optional(),
+      workload: WorkloadLabelSchema.optional(),
       outcome: z.enum(OUTCOME_STATUSES).optional(),
       runtimeStatus: z.string().optional(),
       semanticStatus: z.enum(["pending", "ready", "failed"]).optional(),
@@ -484,6 +486,24 @@ app.get("/api/v1/admin/reporting/turns", requireAdmin, (req, res, next) => {
       limit: z.coerce.number().int().min(1).max(100).optional(),
     }).parse(req.query);
     res.json(listReportingRows(filters));
+  } catch (error) {
+    next(error);
+  }
+});
+
+app.get("/api/v1/admin/reporting/insights", requireAdmin, (req, res, next) => {
+  try {
+    const filters = z.object({
+      from: z.string().datetime().optional(),
+      to: z.string().datetime().optional(),
+      repositoryId: z.string().max(500).optional(),
+      userId: z.string().max(200).optional(),
+      model: z.enum(MODELS).optional(),
+      workload: WorkloadLabelSchema.optional(),
+      outcome: z.enum(OUTCOME_STATUSES).optional(),
+      bucket: z.enum(["hour", "day", "week"]).optional(),
+    }).parse(req.query);
+    res.json(getReportingInsights(filters));
   } catch (error) {
     next(error);
   }

@@ -19,6 +19,11 @@ export const WORKLOAD_LABELS = [
   "unknown",
 ];
 
+export const WorkloadLabelSchema = z.union([
+  z.enum(WORKLOAD_LABELS),
+  z.string().trim().min(2).max(48).regex(/^[a-z][a-z0-9_]*$/, "Use a lowercase workload identifier with underscores"),
+]);
+
 export const ACTION_LABELS = [
   "repo_exploration",
   "code_search",
@@ -49,8 +54,8 @@ const Evidence = z.string().max(80);
 const Confidence = z.enum(CONFIDENCE_LEVELS);
 
 export const WorkloadSchema = z.object({
-  primary: z.enum(WORKLOAD_LABELS),
-  secondary: z.array(z.enum(WORKLOAD_LABELS)).max(2),
+  primary: WorkloadLabelSchema,
+  secondary: z.array(WorkloadLabelSchema).max(2),
   confidence: Confidence,
   evidence: z.array(Evidence).max(8),
 }).strict();

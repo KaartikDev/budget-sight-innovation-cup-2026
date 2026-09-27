@@ -1,0 +1,24 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 850 152"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">BudgetSight</title>
+  <desc id="description">BudgetSight telemetry logo</desc>
+  <rect width="152" height="152" rx="36" fill="#DE7D43" />
+  <path d="M57 42H43L21 76L43 110H57L35 76L57 42Z" fill="#F4F1EA" />
+  <path d="M95 42H109L131 76L109 110H95L117 76L95 42Z" fill="#F4F1EA" />
+  <rect x="56" y="76" width="9" height="15" rx="2.5" fill="#171817" />
+  <rect x="69.5" y="63" width="9" height="28" rx="2.5" fill="#171817" />
+  <rect x="83" y="50" width="9" height="41" rx="2.5" fill="#171817" />
+  <text
+    x="192"
+    y="96"
+    fill="#F4F1EA"
+    font-family="Inter, ui-sans-serif, system-ui, sans-serif"
+    font-size="76"
+    font-weight="700"
+    letter-spacing="-3.2"
+  >Budget<tspan fill="#DE7D43">Sight</tspan></text>
+</svg>

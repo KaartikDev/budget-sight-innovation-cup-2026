@@ -231,6 +231,10 @@ export function listReportingRows(filters = {}) {
   for (const [key, column] of mappings) {
     if (filters[key]) { clauses.push(`${column}=?`); values.push(filters[key]); }
   }
+  if (filters.model) {
+    clauses.push("json_extract(row_json, '$.thread.model')=?");
+    values.push(filters.model);
+  }
   if (filters.from) { clauses.push("started_at>=?"); values.push(filters.from); }
   if (filters.to) { clauses.push("started_at<=?"); values.push(filters.to); }
   if (filters.cursor) { clauses.push("seq<?"); values.push(Number(filters.cursor)); }

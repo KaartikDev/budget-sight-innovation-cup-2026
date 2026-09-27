@@ -1,3 +1,6 @@
 __pycache__/
 *.py[cod]
 example_site/_site/
+jira_app/*.sqlite3
+jira_app/*.sqlite3-shm
+jira_app/*.sqlite3-wal

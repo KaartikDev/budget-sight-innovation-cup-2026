@@ -9,6 +9,7 @@ import { messageHref } from "./message-format.js";
 import { eventItem, eventName, groupTimelineByPrompt, taskOutcome } from "./timeline.js";
 import ReportingDashboard from "./ReportingDashboard.jsx";
 import AccountsPage from "./AccountsPage.jsx";
+import InsightsDashboard from "./InsightsDashboard.jsx";
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 4 });
 const integer = new Intl.NumberFormat("en-US");
@@ -35,19 +36,20 @@ function Icon({ name }) {
     logout: "M10 17l5-5-5-5m5 5H3m12-9h5v18h-5",
     chevron: "m9 18 6-6-6-6",
     chart: "M4 19V9m6 10V5m6 14v-7m4 7H2",
+    insights: "M3 17.5 8.2 12l3.6 3.4L21 5.5M16 5.5h5v5M4 21h16",
     users: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m7-10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm13 10v-2a4 4 0 0 0-3-3.87m-3-11a4 4 0 0 1 0 7.75",
   };
   return <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d={paths[name]} /></svg>;
 }
 
-export function AppHeader({ user, activeView, onThreads, onReporting, onAccounts, onLogout }) {
+export function AppHeader({ user, activeView, onThreads, onInsights, onReporting, onAccounts, onLogout }) {
   return <header className="app-header">
     <button className="app-brand" onClick={onThreads} aria-label="Open threads">
-      <span className="brand-mark">B</span>
-      <span><strong>BudgetSight</strong><small>Agent cost control</small></span>
+      <span className="app-brand-copy"><img className="brand-logo" src="/budgetsight-logo.svg" alt="BudgetSight" /><small>Agent cost control</small></span>
     </button>
     <nav className="primary-nav" aria-label="Primary navigation">
       <button className={activeView === "threads" ? "active" : ""} onClick={onThreads}><Icon name="threads" />Threads</button>
+      {user.role === "admin" && <button className={activeView === "insights" ? "active" : ""} onClick={onInsights}><Icon name="insights" />Insights</button>}
       {user.role === "admin" && <button className={activeView === "reporting" ? "active" : ""} onClick={onReporting}><Icon name="chart" />Reporting</button>}
       {user.role === "admin" && <button className={activeView === "accounts" ? "active" : ""} onClick={onAccounts}><Icon name="users" />Accounts</button>}
     </nav>
@@ -72,7 +74,7 @@ function Login({ onLogin }) {
   }
   return <main className="login-page">
     <section className="login-intro">
-      <div className="brand-lockup"><div className="brand-mark">B</div><span>BudgetSight</span></div>
+      <div className="brand-lockup"><img className="brand-logo" src="/budgetsight-logo.svg" alt="BudgetSight" /></div>
       <div><div className="eyebrow">LOCAL AGENT OPERATIONS</div><h1>Know what every run costs.</h1><p>Track execution, budget exposure, and outcomes across your local Codex workspace.</p></div>
       <div className="login-signals"><span><i className="signal-dot healthy" />Budget enforcement</span><span><i className="signal-dot" />Turn intelligence</span><span><i className="signal-dot" />Audit-ready exports</span></div>
     </section>
@@ -399,8 +401,9 @@ export default function App() {
   const active = tasks.find((task) => task.id === activeId) || null;
   const activeReadOnly = Boolean(active && user && user.role !== "admin" && active.user?.id !== user.id);
   const reporting = location.pathname === "/reporting";
+  const insights = location.pathname === "/insights";
   const accounts = location.pathname === "/accounts";
-  const adminView = user?.role === "admin" && (reporting || accounts);
+  const adminView = user?.role === "admin" && (insights || reporting || accounts);
 
   async function bootstrap(nextUser = user) {
     if (!nextUser) return;
@@ -424,13 +427,13 @@ export default function App() {
   async function repositoryCreated(repository) { setRepos((current) => [...current, repository].sort((a, b) => a.name.localeCompare(b.name))); setSelectedRepo(repository.id); setShowNewRepo(false); setShowNew(true); }
   async function send(text, attachmentIds) { await api(`/tasks/${activeId}/messages`, { method: "POST", body: JSON.stringify({ text, attachmentIds }) }); await refreshDetail(); }
   async function cancel() { await api(`/tasks/${activeId}/cancel`, { method: "POST", body: JSON.stringify({ reason: "Stopped from UI" }) }); await refreshDetail(); }
-  if (loading) return <div className="loading-screen"><div className="brand-mark pulse">B</div></div>;
+  if (loading) return <div className="loading-screen"><img className="loading-logo pulse" src="/budgetsight-logo.svg" alt="BudgetSight" /></div>;
   if (!user) return <Login onLogin={(next) => { setUser(next); bootstrap(next); }} />;
   function selectTask(id) { setActiveId(id); navigate("/"); }
-  const activeView = reporting && user.role === "admin" ? "reporting" : accounts && user.role === "admin" ? "accounts" : "threads";
+  const activeView = insights && user.role === "admin" ? "insights" : reporting && user.role === "admin" ? "reporting" : accounts && user.role === "admin" ? "accounts" : "threads";
   return <div className={`app-shell ${activeView === "threads" ? "thread-view" : "admin-view"}`}>
-    <AppHeader user={user} activeView={activeView} onThreads={() => navigate("/")} onReporting={() => navigate("/reporting")} onAccounts={() => navigate("/accounts")} onLogout={doLogout} />
-    {activeView === "reporting" ? <ReportingDashboard tasks={tasks} /> : activeView === "accounts" ? <AccountsPage /> : <div className="thread-workspace"><Sidebar repos={repos} tasks={tasks} selectedRepo={selectedRepo} setSelectedRepo={setSelectedRepo} activeId={activeId} onSelect={selectTask} onNew={() => { navigate("/"); setShowNew(true); }} onNewRepo={() => setShowNewRepo(true)} /><Conversation task={active} detail={detail} onRefresh={refreshDetail} onSend={send} onCancel={cancel} readOnly={activeReadOnly} /><Inspector task={detail?.task || active} detail={detail} onBudgetChanged={(task) => { setTasks((current) => current.map((item) => item.id === task.id ? task : item)); refreshDetail(task.id); }} readOnly={activeReadOnly} /></div>}
+    <AppHeader user={user} activeView={activeView} onThreads={() => navigate("/")} onInsights={() => navigate("/insights")} onReporting={() => navigate("/reporting")} onAccounts={() => navigate("/accounts")} onLogout={doLogout} />
+    {activeView === "insights" ? <InsightsDashboard /> : activeView === "reporting" ? <ReportingDashboard tasks={tasks} /> : activeView === "accounts" ? <AccountsPage /> : <div className="thread-workspace"><Sidebar repos={repos} tasks={tasks} selectedRepo={selectedRepo} setSelectedRepo={setSelectedRepo} activeId={activeId} onSelect={selectTask} onNew={() => { navigate("/"); setShowNew(true); }} onNewRepo={() => setShowNewRepo(true)} /><Conversation task={active} detail={detail} onRefresh={refreshDetail} onSend={send} onCancel={cancel} readOnly={activeReadOnly} /><Inspector task={detail?.task || active} detail={detail} onBudgetChanged={(task) => { setTasks((current) => current.map((item) => item.id === task.id ? task : item)); refreshDetail(task.id); }} readOnly={activeReadOnly} /></div>}
     {showNew && <NewTask repos={repos} defaultRepo={selectedRepo} onClose={() => setShowNew(false)} onCreated={created} />}
     {showNewRepo && <NewRepository roots={roots} onClose={() => setShowNewRepo(false)} onCreated={repositoryCreated} />}
   </div>;

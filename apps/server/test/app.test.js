@@ -71,6 +71,20 @@ test("admins can create accounts while regular users cannot", async () => {
   }).expect(403);
 });
 
+test("insights reporting is admin-only and returns the aggregate contract", async () => {
+  const admin = request.agent(app);
+  await admin.post("/api/v1/auth/login").send({ username: "test", password: "password" }).expect(200);
+  const response = await admin.get("/api/v1/admin/reporting/insights?bucket=day").expect(200);
+  assert.equal(response.body.window.bucket, "day");
+  assert.equal(response.body.summary.turns, 0);
+  assert.deepEqual(response.body.series, []);
+  assert.ok(response.body.facets);
+
+  const regular = request.agent(app);
+  await regular.post("/api/v1/auth/login").send({ username: "regular", password: "regular-password" }).expect(200);
+  await regular.get("/api/v1/admin/reporting/insights").expect(403);
+});
+
 test("authenticated task lifecycle and complete local export", async () => {
   const agent = request.agent(app);
   await agent.post("/api/v1/auth/login").send({ username: "test", password: "password" }).expect(200);
