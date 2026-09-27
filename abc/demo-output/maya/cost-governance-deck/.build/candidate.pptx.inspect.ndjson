@@ -1,0 +1,235 @@
+{"kind":"deck","id":"pr/oh6lvr","name":"Deck"}
+{"kind":"layout","layoutId":"8a3bfe0b-0262-485d-abda-4b0322afd937","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"12c8254c-c543-49c5-8d7e-114d4140ef19","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/qlt4vn","slide":1,"title":"COST GOVERNANCE   /   01","textShapes":18}
+{"kind":"textbox","id":"sh/pgjm1cri","slide":1,"text":"COST GOVERNANCE   /   01","textPreview":"COST GOVERNANCE   /   01","textChars":24,"textLines":1,"bbox":[68,34,600,25]}
+{"kind":"textbox","id":"sh/2dsn6x8r","slide":1,"text":"Agent spend has a visibility gap","textPreview":"Agent spend has a visibility gap","textChars":32,"textLines":1,"bbox":[68,75,1120,58]}
+{"kind":"textbox","id":"sh/3e14z29c","slide":1,"text":"Costs fragment across models, tools, and teams before finance can explain the bill.","textPreview":"Costs fragment across models, tools, and teams before finance can explain the bill.","textChars":83,"textLines":1,"bbox":[70,139,1110,42]}
+{"kind":"shape","id":"sh/c3u5crq9","slide":1,"bbox":[68,194,1142,0]}
+{"kind":"textbox","id":"sh/d4365wru","slide":1,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/q1snah83","slide":1,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"textbox","id":"sh/r21o3m9o","slide":1,"text":"TODAY: SCATTERED SIGNALS","textPreview":"TODAY: SCATTERED SIGNALS","textChars":24,"textLines":1,"bbox":[76,224,400,22]}
+{"kind":"shape","id":"sh/07u5grq5","slide":1,"bbox":[76,265,308,50]}
+{"kind":"textbox","id":"sh/18369wrq","slide":1,"text":"MODEL API","textPreview":"MODEL API","textChars":9,"textLines":1,"bbox":[92,273,185,33]}
+{"kind":"textbox","id":"sh/9czi5gvm","slide":1,"text":"$18.4k","textPreview":"$18.4k","textChars":6,"textLines":1,"bbox":[278,273,92,33]}
+{"kind":"shape","id":"sh/8bqhcve1","slide":1,"bbox":[400,290,125,0]}
+{"kind":"shape","id":"sh/7ah03qdg","slide":1,"bbox":[76,333,308,50]}
+{"kind":"textbox","id":"sh/m98zalwv","slide":1,"text":"TOOL CALLS","textPreview":"TOOL CALLS","textChars":10,"textLines":1,"bbox":[92,341,185,33]}
+{"kind":"textbox","id":"sh/h0ji90vi","slide":1,"text":"$6.2k","textPreview":"$6.2k","textChars":5,"textLines":1,"bbox":[278,341,92,33]}
+{"kind":"shape","id":"sh/gzahgvux","slide":1,"bbox":[400,358,125,0]}
+{"kind":"shape","id":"sh/vyh07qds","slide":1,"bbox":[76,401,308,50]}
+{"kind":"textbox","id":"sh/ud8zelc7","slide":1,"text":"RETRIES","textPreview":"RETRIES","textChars":7,"textLines":1,"bbox":[92,409,185,33]}
+{"kind":"textbox","id":"sh/x4fyxwve","slide":1,"text":"$4.1k","textPreview":"$4.1k","textChars":5,"textLines":1,"bbox":[278,409,92,33]}
+{"kind":"shape","id":"sh/c36h4bet","slide":1,"bbox":[400,426,125,0]}
+{"kind":"shape","id":"sh/onahkbmp","slide":1,"bbox":[76,469,308,50]}
+{"kind":"textbox","id":"sh/pojidg3a","slide":1,"text":"SHARED RUNTIME","textPreview":"SHARED RUNTIME","textChars":14,"textLines":1,"bbox":[92,477,185,33]}
+{"kind":"textbox","id":"sh/2lszi14j","slide":1,"text":"$3.8k","textPreview":"$3.8k","textChars":5,"textLines":1,"bbox":[278,477,92,33]}
+{"kind":"shape","id":"sh/3m10b6l4","slide":1,"bbox":[400,494,125,0]}
+{"kind":"shape","id":"sh/crahobml","slide":1,"bbox":[548,268,4,239]}
+{"kind":"textbox","id":"sh/dsjihg36","slide":1,"text":"No shared unit\nNo owner\nNo outcome link","textPreview":"No shared unit | No owner | No outcome link","textChars":39,"textLines":3,"bbox":[575,320,235,130]}
+{"kind":"shape","id":"sh/qpszml4v","slide":1,"bbox":[815,385,75,0]}
+{"kind":"shape","id":"sh/bq10f6lg","slide":1,"bbox":[872,375,24,20]}
+{"kind":"shape","id":"sh/0fu1svmx","slide":1,"bbox":[920,252,285,248]}
+{"kind":"textbox","id":"sh/lg3il03i","slide":1,"text":"GOVERNED VIEW","textPreview":"GOVERNED VIEW","textChars":13,"textLines":1,"bbox":[948,280,220,22]}
+{"kind":"textbox","id":"sh/va5kbu5k","slide":1,"text":"One workload\nOne owner\nOne cost-to-outcome view","textPreview":"One workload | One owner | One cost-to-outcome view","textChars":47,"textLines":3,"bbox":[948,322,220,120]}
+{"kind":"textbox","id":"sh/u9w3ipoz","slide":1,"text":"Illustrative monthly spend fragments shown for structure only.","textPreview":"Illustrative monthly spend fragments shown for structure only.","textChars":62,"textLines":1,"bbox":[76,570,900,25]}
+{"kind":"notes","id":"nt/qlt4vn","slide":1,"text":"Illustrative operating model for BudgetSight demo; no company-specific spend data is represented."}
+{"kind":"slide","id":"sl/3w0bq1","slide":2,"title":"COST GOVERNANCE   /   02","textShapes":26}
+{"kind":"textbox","id":"sh/gvq9snip","slide":2,"text":"COST GOVERNANCE   /   02","textPreview":"COST GOVERNANCE   /   02","textChars":24,"textLines":1,"bbox":[68,34,600,25]}
+{"kind":"textbox","id":"sh/fuh8zih4","slide":2,"text":"Normalize workloads before comparing cost","textPreview":"Normalize workloads before comparing cost","textChars":41,"textLines":1,"bbox":[68,75,1120,58]}
+{"kind":"textbox","id":"sh/ut8rqd0j","slide":2,"text":"A shared unit makes unlike agent runs comparable across teams and providers.","textPreview":"A shared unit makes unlike agent runs comparable across teams and providers.","textChars":76,"textLines":1,"bbox":[70,139,1110,42]}
+{"kind":"shape","id":"sh/tszqxszy","slide":2,"bbox":[68,194,1142,0]}
+{"kind":"textbox","id":"sh/srq9onid","slide":2,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/7qx8vihs","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"textbox","id":"sh/6pormd0n","slide":2,"text":"WORKLOAD","textPreview":"WORKLOAD","textChars":8,"textLines":1,"bbox":[72,223,260,22]}
+{"kind":"textbox","id":"sh/54fqt8z2","slide":2,"text":"USAGE / RUN","textPreview":"USAGE / RUN","textChars":11,"textLines":1,"bbox":[390,223,240,22]}
+{"kind":"textbox","id":"sh/k369k3ih","slide":2,"text":"COST / RUN","textPreview":"COST / RUN","textChars":10,"textLines":1,"bbox":[685,223,180,22]}
+{"kind":"textbox","id":"sh/6dsjqh47","slide":2,"text":"OWNER","textPreview":"OWNER","textChars":5,"textLines":1,"bbox":[888,223,150,22]}
+{"kind":"shape","id":"sh/7e10zm5s","slide":2,"bbox":[72,327,1136,0]}
+{"kind":"textbox","id":"sh/sza1srmx","slide":2,"text":"Support resolution","textPreview":"Support resolution","textChars":18,"textLines":1,"bbox":[72,263,290,50]}
+{"kind":"textbox","id":"sh/t0ji1wni","slide":2,"text":"4.2k tokens · 3 tools","textPreview":"4.2k tokens · 3 tools","textChars":21,"textLines":1,"bbox":[390,263,265,50]}
+{"kind":"textbox","id":"sh/i98jmh4v","slide":2,"text":"$0.084","textPreview":"$0.084","textChars":6,"textLines":1,"bbox":[685,263,160,50]}
+{"kind":"textbox","id":"sh/jah0v25g","slide":2,"text":"Service","textPreview":"Service","textChars":7,"textLines":1,"bbox":[888,263,160,50]}
+{"kind":"shape","id":"sh/kbq1o7m1","slide":2,"bbox":[1070,273,118,32]}
+{"kind":"textbox","id":"sh/5czixcnm","slide":2,"text":"Tracked","textPreview":"Tracked","textChars":7,"textLines":1,"bbox":[1076,275,106,26]}
+{"kind":"shape","id":"sh/a58zix4z","slide":2,"bbox":[72,415,1136,0]}
+{"kind":"textbox","id":"sh/v6h0r25k","slide":2,"text":"Invoice review","textPreview":"Invoice review","textChars":14,"textLines":1,"bbox":[72,351,290,50]}
+{"kind":"textbox","id":"sh/zadgjylc","slide":2,"text":"8.6k tokens · 2 tools","textPreview":"8.6k tokens · 2 tools","textChars":21,"textLines":1,"bbox":[390,351,265,50]}
+{"kind":"textbox","id":"sh/e94fqtkr","slide":2,"text":"$0.126","textPreview":"$0.126","textChars":6,"textLines":1,"bbox":[685,351,160,50]}
+{"kind":"textbox","id":"sh/1cvyl832","slide":2,"text":"Finance","textPreview":"Finance","textChars":7,"textLines":1,"bbox":[888,351,160,50]}
+{"kind":"shape","id":"sh/0bmxs32x","slide":2,"bbox":[1070,361,118,32]}
+{"kind":"textbox","id":"sh/nexgnil8","slide":2,"text":"Tracked","textPreview":"Tracked","textChars":7,"textLines":1,"bbox":[1076,363,106,26]}
+{"kind":"shape","id":"sh/md4fudkn","slide":2,"bbox":[72,503,1136,0]}
+{"kind":"textbox","id":"sh/9gfyp83e","slide":2,"text":"Code change","textPreview":"Code change","textChars":11,"textLines":1,"bbox":[72,439,290,50]}
+{"kind":"textbox","id":"sh/of6xw32t","slide":2,"text":"12.1k tokens · 5 tools","textPreview":"12.1k tokens · 5 tools","textChars":22,"textLines":1,"bbox":[390,439,265,50]}
+{"kind":"textbox","id":"sh/3itwbel4","slide":2,"text":"$0.392","textPreview":"$0.392","textChars":6,"textLines":1,"bbox":[685,439,160,50]}
+{"kind":"textbox","id":"sh/2hkfi94j","slide":2,"text":"Engineering","textPreview":"Engineering","textChars":11,"textLines":1,"bbox":[888,439,160,50]}
+{"kind":"shape","id":"sh/snidsfih","slide":2,"bbox":[1070,449,118,32]}
+{"kind":"textbox","id":"sh/torulkjm","slide":2,"text":"Review","textPreview":"Review","textChars":6,"textLines":1,"bbox":[1076,451,106,26]}
+{"kind":"shape","id":"sh/6lgvq50b","slide":2,"bbox":[72,555,1136,72]}
+{"kind":"textbox","id":"sh/7mpcja1w","slide":2,"text":"Unit of control","textPreview":"Unit of control","textChars":15,"textLines":1,"bbox":[94,570,195,35]}
+{"kind":"textbox","id":"sh/kjydov25","slide":2,"text":"Cost per successful task, segmented by workload and owner","textPreview":"Cost per successful task, segmented by workload and owner","textChars":57,"textLines":1,"bbox":[294,567,860,42]}
+{"kind":"notes","id":"nt/3w0bq1","slide":2,"text":"Illustrative operating model for BudgetSight demo; no company-specific spend data is represented."}
+{"kind":"slide","id":"sl/1gsd9q","slide":3,"title":"COST GOVERNANCE   /   03","textShapes":21}
+{"kind":"textbox","id":"sh/t8b2l4be","slide":3,"text":"COST GOVERNANCE   /   03","textPreview":"COST GOVERNANCE   /   03","textChars":24,"textLines":1,"bbox":[68,34,600,25]}
+{"kind":"textbox","id":"sh/6l0ja9c3","slide":3,"text":"Spend alone cannot rank agent workloads","textPreview":"Spend alone cannot rank agent workloads","textChars":39,"textLines":1,"bbox":[68,75,1120,58]}
+{"kind":"textbox","id":"sh/76tkjedo","slide":3,"text":"Pair cost with task success and business value to decide where to scale, tune, or stop.","textPreview":"Pair cost with task success and business value to decide where to scale, tune, or stop.","textChars":87,"textLines":1,"bbox":[70,139,1110,42]}
+{"kind":"shape","id":"sh/gb2lgju5","slide":3,"bbox":[68,194,1142,0]}
+{"kind":"textbox","id":"sh/hcb2pobq","slide":3,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/u9k3e9cz","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"shape","id":"sh/fatknetk","slide":3,"bbox":[170,585,670,0]}
+{"kind":"shape","id":"sh/4fmlkju1","slide":3,"bbox":[170,250,0,335]}
+{"kind":"shape","id":"sh/pgv2tobm","slide":3,"bbox":[170,585,670,0]}
+{"kind":"shape","id":"sh/xovixwz6","slide":3,"bbox":[170,485,670,0]}
+{"kind":"shape","id":"sh/wnm14ryl","slide":3,"bbox":[170,385,670,0]}
+{"kind":"shape","id":"sh/vmd0v6h0","slide":3,"bbox":[170,285,670,0]}
+{"kind":"textbox","id":"sh/al4j21gv","slide":3,"text":"LOWER COST / SUCCESSFUL TASK","textPreview":"LOWER COST / SUCCESSFUL TASK","textChars":28,"textLines":1,"bbox":[180,610,400,24]}
+{"kind":"textbox","id":"sh/5cf21gzi","slide":3,"text":"HIGHER COST  →","textPreview":"HIGHER COST  →","textChars":14,"textLines":1,"bbox":[592,610,230,24]}
+{"kind":"textbox","id":"sh/kr618byx","slide":3,"text":"HIGHER","textPreview":"HIGHER","textChars":6,"textLines":1,"bbox":[92,244,72,23]}
+{"kind":"textbox","id":"sh/jqxkz6hc","slide":3,"text":"QUALITY","textPreview":"QUALITY","textChars":7,"textLines":1,"bbox":[72,330,88,24]}
+{"kind":"shape","id":"sh/ip4j61gr","slide":3,"bbox":[257,327,36,36]}
+{"kind":"textbox","id":"sh/lgbipczy","slide":3,"text":"Support","textPreview":"Support","textChars":7,"textLines":1,"bbox":[300,329,170,30]}
+{"kind":"shape","id":"sh/0v21w7yd","slide":3,"bbox":[488,408,44,44]}
+{"kind":"textbox","id":"sh/cz61crq9","slide":3,"text":"Invoice review","textPreview":"Invoice review","textChars":14,"textLines":1,"bbox":[535,414,170,30]}
+{"kind":"shape","id":"sh/d0filc7u","slide":3,"bbox":[710,275,50,50]}
+{"kind":"textbox","id":"sh/qxojah8j","slide":3,"text":"Code change","textPreview":"Code change","textChars":11,"textLines":1,"bbox":[760,284,170,30]}
+{"kind":"shape","id":"sh/ryx0jmpo","slide":3,"bbox":[405,515,30,30]}
+{"kind":"textbox","id":"sh/03q1gr6l","slide":3,"text":"Research","textPreview":"Research","textChars":8,"textLines":1,"bbox":[445,514,170,30]}
+{"kind":"textbox","id":"sh/14z2pw76","slide":3,"text":"Decision zones","textPreview":"Decision zones","textChars":14,"textLines":1,"bbox":[910,248,240,28]}
+{"kind":"shape","id":"sh/e1ojeh8f","slide":3,"bbox":[910,287,286,78]}
+{"kind":"textbox","id":"sh/z2xknmp0","slide":3,"text":"SCALE","textPreview":"SCALE","textChars":5,"textLines":1,"bbox":[932,298,80,24]}
+{"kind":"textbox","id":"sh/orq1kb6h","slide":3,"text":"Strong outcome · efficient","textPreview":"Strong outcome · efficient","textChars":26,"textLines":1,"bbox":[932,322,245,30]}
+{"kind":"shape","id":"sh/9sz2tg72","slide":3,"bbox":[910,382,286,78]}
+{"kind":"textbox","id":"sh/jylczudg","slide":3,"text":"TUNE","textPreview":"TUNE","textChars":4,"textLines":1,"bbox":[932,393,80,24]}
+{"kind":"textbox","id":"sh/ixcv6pwv","slide":3,"text":"Strong outcome · costly","textPreview":"Strong outcome · costly","textChars":23,"textLines":1,"bbox":[932,417,245,30]}
+{"kind":"shape","id":"sh/50ne14vm","slide":3,"bbox":[910,477,286,78]}
+{"kind":"textbox","id":"sh/4zud8zu1","slide":3,"text":"REVIEW","textPreview":"REVIEW","textChars":6,"textLines":1,"bbox":[932,488,90,24]}
+{"kind":"textbox","id":"sh/valcvudk","slide":3,"text":"Weak outcome · costly","textPreview":"Weak outcome · costly","textChars":21,"textLines":1,"bbox":[932,512,245,30]}
+{"kind":"textbox","id":"sh/u9cv2pwz","slide":3,"text":"Illustrative relative indices; bubble size is not a reported spend value.","textPreview":"Illustrative relative indices; bubble size is not a reported spend value.","textChars":73,"textLines":1,"bbox":[171,645,850,19]}
+{"kind":"notes","id":"nt/1gsd9q","slide":3,"text":"Chart values below are illustrative indices for a demo workload, not measured financial or operational results."}
+{"kind":"slide","id":"sl/s5p2z3","slide":4,"title":"COST GOVERNANCE   /   04","textShapes":18}
+{"kind":"textbox","id":"sh/xcjyhg3u","slide":4,"text":"COST GOVERNANCE   /   04","textPreview":"COST GOVERNANCE   /   04","textChars":24,"textLines":1,"bbox":[68,34,600,25]}
+{"kind":"textbox","id":"sh/a98fmlk3","slide":4,"text":"Coordination creates hidden overlap","textPreview":"Coordination creates hidden overlap","textChars":35,"textLines":1,"bbox":[68,75,1120,58]}
+{"kind":"textbox","id":"sh/bahgfqlo","slide":4,"text":"Parallel agents can repeat retrieval, planning, and verification work unless handoffs are explicit.","textPreview":"Parallel agents can repeat retrieval, planning, and verification work unless handoffs are explicit.","textChars":99,"textLines":1,"bbox":[70,139,1110,42]}
+{"kind":"shape","id":"sh/onqxkb2d","slide":4,"bbox":[68,194,1142,0]}
+{"kind":"textbox","id":"sh/98zydg3y","slide":4,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/ml8fi1k7","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"textbox","id":"sh/nmhgb6ls","slide":4,"text":"SHARED TASK: PREPARE AN ACCOUNT BRIEF","textPreview":"SHARED TASK: PREPARE AN ACCOUNT BRIEF","textChars":37,"textLines":1,"bbox":[78,222,520,22]}
+{"kind":"textbox","id":"sh/sjuhwf2h","slide":4,"text":"Researcher","textPreview":"Researcher","textChars":10,"textLines":1,"bbox":[78,276,165,40]}
+{"kind":"shape","id":"sh/t43yp0j2","slide":4,"bbox":[245,298,929,0]}
+{"kind":"shape","id":"sh/1svapgra","slide":4,"bbox":[280,280,260,38]}
+{"kind":"textbox","id":"sh/grmtwbap","slide":4,"text":"Retrieve account context","textPreview":"Retrieve account context","textChars":24,"textLines":1,"bbox":[293,283,234,32]}
+{"kind":"textbox","id":"sh/fqdsn69k","slide":4,"text":"Planner","textPreview":"Planner","textChars":7,"textLines":1,"bbox":[78,378,165,40]}
+{"kind":"shape","id":"sh/ep4bulsz","slide":4,"bbox":[245,400,929,0]}
+{"kind":"shape","id":"sh/tovalgre","slide":4,"bbox":[280,382,260,38]}
+{"kind":"textbox","id":"sh/snmtsbat","slide":4,"text":"Retrieve account context","textPreview":"Retrieve account context","textChars":24,"textLines":1,"bbox":[293,385,234,32]}
+{"kind":"textbox","id":"sh/rmtsj698","slide":4,"text":"Writer","textPreview":"Writer","textChars":6,"textLines":1,"bbox":[78,480,165,40]}
+{"kind":"shape","id":"sh/6lkbq1sn","slide":4,"bbox":[245,502,929,0]}
+{"kind":"shape","id":"sh/xkfux0ri","slide":4,"bbox":[280,484,260,38]}
+{"kind":"textbox","id":"sh/cj6t4vax","slide":4,"text":"Retrieve account context","textPreview":"Retrieve account context","textChars":24,"textLines":1,"bbox":[293,487,234,32]}
+{"kind":"shape","id":"sh/wned0ji9","slide":4,"bbox":[550,280,300,38]}
+{"kind":"textbox","id":"sh/xonet4zu","slide":4,"text":"Same sources retrieved again","textPreview":"Same sources retrieved again","textChars":28,"textLines":1,"bbox":[563,283,275,32]}
+{"kind":"shape","id":"sh/a1wvy903","slide":4,"bbox":[550,382,300,38]}
+{"kind":"textbox","id":"sh/vm5creho","slide":4,"text":"Plan repeats research steps","textPreview":"Plan repeats research steps","textChars":27,"textLines":1,"bbox":[563,385,275,32]}
+{"kind":"shape","id":"sh/8zedwzid","slide":4,"bbox":[550,484,300,38]}
+{"kind":"textbox","id":"sh/90nup4zi","slide":4,"text":"Draft starts without a check","textPreview":"Draft starts without a check","textChars":28,"textLines":1,"bbox":[563,487,275,32]}
+{"kind":"textbox","id":"sh/mxcvup07","slide":4,"text":"Measure overlap","textPreview":"Measure overlap","textChars":15,"textLines":1,"bbox":[78,578,196,32]}
+{"kind":"textbox","id":"sh/nylcnuhs","slide":4,"text":"duplicate tool calls   ·   repeated tokens   ·   idle handoff time","textPreview":"duplicate tool calls   ·   repeated tokens   ·   idle handoff time","textChars":66,"textLines":1,"bbox":[278,578,825,32]}
+{"kind":"textbox","id":"sh/0vudszi1","slide":4,"text":"Control: assign a task owner, shared context boundary, and stop condition.","textPreview":"Control: assign a task owner, shared context boundary, and stop condition.","textChars":74,"textLines":1,"bbox":[78,622,1080,30]}
+{"kind":"notes","id":"nt/s5p2z3","slide":4,"text":"Illustrative operating model for BudgetSight demo; no company-specific spend data is represented."}
+{"kind":"slide","id":"sl/wzoag9","slide":5,"title":"COST GOVERNANCE   /   05","textShapes":20}
+{"kind":"textbox","id":"sh/1gvi5wb2","slide":5,"text":"COST GOVERNANCE   /   05","textPreview":"COST GOVERNANCE   /   05","textChars":24,"textLines":1,"bbox":[68,34,600,25]}
+{"kind":"textbox","id":"sh/etkzuhcr","slide":5,"text":"Validation gaps hide the real cost of failure","textPreview":"Validation gaps hide the real cost of failure","textChars":45,"textLines":1,"bbox":[68,75,1120,58]}
+{"kind":"textbox","id":"sh/zet03mtw","slide":5,"text":"Track quality, policy, and latency alongside dollars before a workload ships.","textPreview":"Track quality, policy, and latency alongside dollars before a workload ships.","textChars":77,"textLines":1,"bbox":[70,139,1110,42]}
+{"kind":"shape","id":"sh/ojmh0but","slide":5,"bbox":[68,194,1142,0]}
+{"kind":"textbox","id":"sh/9kvi9gbe","slide":5,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/mh4zy1cn","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"shape","id":"sh/nid076t8","slide":5,"bbox":[76,270,220,124]}
+{"kind":"textbox","id":"sh/wn6h4bup","slide":5,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[92,283,48,28]}
+{"kind":"textbox","id":"sh/xofidgba","slide":5,"text":"Spend cap","textPreview":"Spend cap","textChars":9,"textLines":1,"bbox":[92,317,190,35]}
+{"kind":"textbox","id":"sh/lk7uhc3i","slide":5,"text":"Per run + daily","textPreview":"Per run + daily","textChars":15,"textLines":1,"bbox":[92,355,190,28]}
+{"kind":"shape","id":"sh/kjyd87mx","slide":5,"bbox":[296,332,48,0]}
+{"kind":"shape","id":"sh/jipcf2lc","slide":5,"bbox":[338,324,18,16]}
+{"kind":"shape","id":"sh/yhgv6x4r","slide":5,"bbox":[356,270,220,124]}
+{"kind":"textbox","id":"sh/t8relw3e","slide":5,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[372,283,48,28]}
+{"kind":"textbox","id":"sh/87idcr29","slide":5,"text":"Quality check","textPreview":"Quality check","textChars":13,"textLines":1,"bbox":[372,317,190,35]}
+{"kind":"textbox","id":"sh/769wjmlo","slide":5,"text":"Task success","textPreview":"Task success","textChars":12,"textLines":1,"bbox":[372,355,190,28]}
+{"kind":"shape","id":"sh/65gvah43","slide":5,"bbox":[576,332,48,0]}
+{"kind":"shape","id":"sh/9cnu9s3a","slide":5,"bbox":[618,324,18,16]}
+{"kind":"shape","id":"sh/obed0nmp","slide":5,"bbox":[636,270,220,124]}
+{"kind":"textbox","id":"sh/gvidgnul","slide":5,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[652,283,48,28]}
+{"kind":"textbox","id":"sh/1wrepsb6","slide":5,"text":"Safety check","textPreview":"Safety check","textChars":12,"textLines":1,"bbox":[652,317,190,35]}
+{"kind":"textbox","id":"sh/et0vexcf","slide":5,"text":"Policy + data","textPreview":"Policy + data","textChars":13,"textLines":1,"bbox":[652,355,190,28]}
+{"kind":"shape","id":"sh/fu9cn2t0","slide":5,"bbox":[856,332,48,0]}
+{"kind":"shape","id":"sh/oz2dk7ux","slide":5,"bbox":[898,324,18,16]}
+{"kind":"shape","id":"sh/p0betcb2","slide":5,"bbox":[916,270,220,124]}
+{"kind":"textbox","id":"sh/2x0vixcr","slide":5,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[932,283,48,28]}
+{"kind":"textbox","id":"sh/3y9wr2tc","slide":5,"text":"Latency check","textPreview":"Latency check","textChars":13,"textLines":1,"bbox":[932,317,190,35]}
+{"kind":"textbox","id":"sh/cn2do7ut","slide":5,"text":"p95 target","textPreview":"p95 target","textChars":10,"textLines":1,"bbox":[932,355,190,28]}
+{"kind":"shape","id":"sh/xobexcbe","slide":5,"bbox":[1026,394,0,64]}
+{"kind":"shape","id":"sh/7uxo3ahs","slide":5,"bbox":[828,458,380,114]}
+{"kind":"textbox","id":"sh/6to7a507","slide":5,"text":"Without a release gate","textPreview":"Without a release gate","textChars":22,"textLines":1,"bbox":[850,472,330,30]}
+{"kind":"textbox","id":"sh/twzq5kzy","slide":5,"text":"Spend can fall while failure, rework, or policy exposure rises.","textPreview":"Spend can fall while failure, rework, or policy exposure rises.","textChars":63,"textLines":1,"bbox":[850,508,330,49]}
+{"kind":"textbox","id":"sh/8v6pcfid","slide":5,"text":"Release only when all four thresholds pass; log exceptions with an owner and expiry.","textPreview":"Release only when all four thresholds pass; log exceptions with an owner and expiry.","textChars":84,"textLines":1,"bbox":[76,608,1110,32]}
+{"kind":"notes","id":"nt/wzoag9","slide":5,"text":"Illustrative operating model for BudgetSight demo; no company-specific spend data is represented."}
+{"kind":"slide","id":"sl/wxw8bw","slide":6,"title":"COST GOVERNANCE   /   06","textShapes":19}
+{"kind":"textbox","id":"sh/r6l0n654","slide":6,"text":"COST GOVERNANCE   /   06","textPreview":"COST GOVERNANCE   /   06","textChars":24,"textLines":1,"bbox":[68,34,600,25]}
+{"kind":"textbox","id":"sh/c7u1wb6p","slide":6,"text":"An operating loop makes controls actionable","textPreview":"An operating loop makes controls actionable","textChars":43,"textLines":1,"bbox":[68,75,1120,58]}
+{"kind":"textbox","id":"sh/d83ipgna","slide":6,"text":"Use one monthly review rhythm, with automated limits applied at run time.","textPreview":"Use one monthly review rhythm, with automated limits applied at run time.","textChars":73,"textLines":1,"bbox":[70,139,1110,42]}
+{"kind":"shape","id":"sh/21sjqhon","slide":6,"bbox":[68,194,1142,0]}
+{"kind":"textbox","id":"sh/3210jm58","slide":6,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/43a1sr6d","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"shape","id":"sh/p43ilwny","slide":6,"bbox":[90,285,58,58]}
+{"kind":"textbox","id":"sh/udsjmhob","slide":6,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[90,288,58,48]}
+{"kind":"textbox","id":"sh/fe10fm5w","slide":6,"text":"Instrument","textPreview":"Instrument","textChars":10,"textLines":1,"bbox":[166,287,190,35]}
+{"kind":"textbox","id":"sh/n2xkni9w","slide":6,"text":"Capture model, tool,\nteam, and task","textPreview":"Capture model, tool, | team, and task","textChars":35,"textLines":2,"bbox":[166,327,190,68]}
+{"kind":"shape","id":"sh/m14judsb","slide":6,"bbox":[334,314,33,0]}
+{"kind":"shape","id":"sh/9of2psrm","slide":6,"bbox":[358,306,17,16]}
+{"kind":"shape","id":"sh/8n61wna1","slide":6,"bbox":[375,285,58,58]}
+{"kind":"textbox","id":"sh/vqxkri9s","slide":6,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[375,288,58,48]}
+{"kind":"textbox","id":"sh/apojyxs7","slide":6,"text":"Normalize","textPreview":"Normalize","textChars":9,"textLines":1,"bbox":[451,287,190,35]}
+{"kind":"textbox","id":"sh/xsf2tsry","slide":6,"text":"Compare cost per\nsuccessful task","textPreview":"Compare cost per | successful task","textChars":32,"textLines":2,"bbox":[451,327,190,68]}
+{"kind":"shape","id":"sh/wr610nad","slide":6,"bbox":[619,314,33,0]}
+{"kind":"shape","id":"sh/but0fyto","slide":6,"bbox":[643,306,17,16]}
+{"kind":"shape","id":"sh/qtkjmts3","slide":6,"bbox":[660,285,58,58]}
+{"kind":"textbox","id":"sh/upsnu1cr","slide":6,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[660,288,58,48]}
+{"kind":"textbox","id":"sh/fq14n6tc","slide":6,"text":"Set controls","textPreview":"Set controls","textChars":12,"textLines":1,"bbox":[736,287,190,35]}
+{"kind":"textbox","id":"sh/gra5wbuh","slide":6,"text":"Budgets, quality bars,\npolicy, stop rules","textPreview":"Budgets, quality bars, | policy, stop rules","textChars":41,"textLines":2,"bbox":[736,327,190,68]}
+{"kind":"shape","id":"sh/hsjmpgb2","slide":6,"bbox":[904,314,33,0]}
+{"kind":"shape","id":"sh/6l83q1cf","slide":6,"bbox":[928,306,17,16]}
+{"kind":"shape","id":"sh/7m14jmt0","slide":6,"bbox":[945,285,58,58]}
+{"kind":"textbox","id":"sh/sna5srul","slide":6,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[945,288,58,48]}
+{"kind":"textbox","id":"sh/tojmlwb6","slide":6,"text":"Review & tune","textPreview":"Review & tune","textChars":13,"textLines":1,"bbox":[1021,287,190,35]}
+{"kind":"textbox","id":"sh/ih83mhcj","slide":6,"text":"Explain variance;\nscale, tune, retire","textPreview":"Explain variance; | scale, tune, retire","textChars":37,"textLines":2,"bbox":[1021,327,190,68]}
+{"kind":"shape","id":"sh/jih4fmd4","slide":6,"bbox":[1093,393,0,97]}
+{"kind":"shape","id":"sh/lo7yhozi","slide":6,"bbox":[118,490,975,0]}
+{"kind":"shape","id":"sh/knyh8jid","slide":6,"bbox":[118,392,0,98]}
+{"kind":"shape","id":"sh/zmpgfehs","slide":6,"bbox":[109,389,18,16]}
+{"kind":"shape","id":"sh/ylgz6907","slide":6,"bbox":[80,548,215,34]}
+{"kind":"textbox","id":"sh/xk7yd4zm","slide":6,"text":"Run-time guardrails","textPreview":"Run-time guardrails","textChars":19,"textLines":1,"bbox":[88,550,199,28]}
+{"kind":"textbox","id":"sh/cjyx4zi1","slide":6,"text":"Hard spend ceiling  ·  Approved model/tool list  ·  Quality and latency alerts","textPreview":"Hard spend ceiling  ·  Approved model/tool list  ·  Quality and latency alerts","textChars":78,"textLines":1,"bbox":[322,549,830,33]}
+{"kind":"notes","id":"nt/wxw8bw","slide":6,"text":"Illustrative operating model for BudgetSight demo; no company-specific spend data is represented."}
+{"kind":"slide","id":"sl/idkw74","slide":7,"title":"COST GOVERNANCE   /   RECOMMENDATION","textShapes":19}
+{"kind":"textbox","id":"sh/ixwz6xgv","slide":7,"text":"COST GOVERNANCE   /   RECOMMENDATION","textPreview":"COST GOVERNANCE   /   RECOMMENDATION","textChars":36,"textLines":1,"bbox":[68,42,700,25]}
+{"kind":"textbox","id":"sh/5k7i1cf6","slide":7,"text":"Fund visibility first.\nScale on evidence.","textPreview":"Fund visibility first. | Scale on evidence.","textChars":41,"textLines":2,"bbox":[68,105,725,155]}
+{"kind":"textbox","id":"sh/4zyh87e1","slide":7,"text":"Approve a 90-day control pilot across three representative agent workloads.","textPreview":"Approve a 90-day control pilot across three representative agent workloads.","textChars":75,"textLines":1,"bbox":[72,281,765,70]}
+{"kind":"shape","id":"sh/vu50v2x4","slide":7,"bbox":[72,382,738,0]}
+{"kind":"textbox","id":"sh/utwz2xgj","slide":7,"text":"01","textPreview":"01","textChars":2,"textLines":1,"bbox":[72,420,54,34]}
+{"kind":"textbox","id":"sh/hwnixcfa","slide":7,"text":"Name owners","textPreview":"Name owners","textChars":11,"textLines":1,"bbox":[140,420,235,34]}
+{"kind":"textbox","id":"sh/wveh47yp","slide":7,"text":"One accountable team per workload","textPreview":"One accountable team per workload","textChars":33,"textLines":1,"bbox":[385,420,475,38]}
+{"kind":"textbox","id":"sh/fqp07mxo","slide":7,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[72,498,54,34]}
+{"kind":"textbox","id":"sh/epgze1w3","slide":7,"text":"Set shared measures","textPreview":"Set shared measures","textChars":19,"textLines":1,"bbox":[140,498,235,34]}
+{"kind":"textbox","id":"sh/0vip8bed","slide":7,"text":"Cost / successful task + quality + latency","textPreview":"Cost / successful task + quality + latency","textChars":42,"textLines":1,"bbox":[385,498,475,38]}
+{"kind":"textbox","id":"sh/1wrq1gvy","slide":7,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[72,576,54,34]}
+{"kind":"textbox","id":"sh/et0761w7","slide":7,"text":"Gate expansion","textPreview":"Gate expansion","textChars":14,"textLines":1,"bbox":[140,576,235,34]}
+{"kind":"textbox","id":"sh/zu98z6ds","slide":7,"text":"Review variance monthly; scale only when thresholds hold","textPreview":"Review variance monthly; scale only when thresholds hold","textChars":56,"textLines":1,"bbox":[385,576,475,38]}
+{"kind":"shape","id":"sh/crip4re1","slide":7,"bbox":[902,164,300,374]}
+{"kind":"textbox","id":"sh/dsrqxwvm","slide":7,"text":"DECISION REQUESTED","textPreview":"DECISION REQUESTED","textChars":18,"textLines":1,"bbox":[930,195,235,22]}
+{"kind":"textbox","id":"sh/q5g721wb","slide":7,"text":"Sponsor a 90-day pilot","textPreview":"Sponsor a 90-day pilot","textChars":22,"textLines":1,"bbox":[930,239,242,70]}
+{"kind":"textbox","id":"sh/r69ovmdg","slide":7,"text":"Finance + platform + 3 workload owners","textPreview":"Finance + platform + 3 workload owners","textChars":38,"textLines":1,"bbox":[930,331,238,60]}
+{"kind":"shape","id":"sh/43yp0re5","slide":7,"bbox":[930,412,243,0]}
+{"kind":"textbox","id":"sh/p476twvq","slide":7,"text":"Deliverable","textPreview":"Deliverable","textChars":11,"textLines":1,"bbox":[930,433,220,26]}
+{"kind":"textbox","id":"sh/lofehoj2","slide":7,"text":"A cost-to-outcome baseline and a scale / tune / stop decision","textPreview":"A cost-to-outcome baseline and a scale / tune / stop decision","textChars":61,"textLines":1,"bbox":[930,465,238,54]}
+{"kind":"textbox","id":"sh/kn6d8j2h","slide":7,"text":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textPreview":"BUDGETSIGHT   •   EXECUTIVE BRIEF","textChars":33,"textLines":1,"bbox":[68,676,600,20]}
+{"kind":"textbox","id":"sh/jmxwfe1c","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1164,671,46,24]}
+{"kind":"notes","id":"nt/idkw74","slide":7,"text":"Recommendation for discussion: sponsor a 90-day pilot. Scope and thresholds should be confirmed by Finance, Platform, and workload owners. All example metrics elsewhere in this deck are illustrative, not measured results."}

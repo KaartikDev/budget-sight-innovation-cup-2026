@@ -13,6 +13,7 @@
     "test": "npm run test -w @budgetsight/server && npm run test -w @budgetsight/web",
     "seed-user": "npm run seed-user -w @budgetsight/server",
     "seed-defaults": "npm run seed-defaults -w @budgetsight/server",
+    "demo:workloads": "npm run demo:workloads -w @budgetsight/server --",
     "extract:backfill": "npm run extract:backfill -w @budgetsight/server --"
   },
   "devDependencies": {

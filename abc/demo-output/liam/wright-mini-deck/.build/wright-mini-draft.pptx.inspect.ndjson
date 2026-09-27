@@ -1,0 +1,53 @@
+{"kind":"deck","id":"pr/n7o4fe","name":"Deck"}
+{"kind":"layout","layoutId":"b8143dc9-7c03-4260-bc51-29281a72f791","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"c1f1b919-61ad-4e93-a31c-88fb9f753f4f","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/d0ur4d","slide":1,"title":"THE PROBLEM","textShapes":4}
+{"kind":"shape","id":"sh/ve10zi1k","slide":1,"name":"Accent rule","bbox":[0,0,12,720]}
+{"kind":"textbox","id":"sh/wfuh8n25","slide":1,"name":"Section","text":"THE PROBLEM","textPreview":"THE PROBLEM","textChars":11,"textLines":1,"bbox":[72,58,490,26]}
+{"kind":"textbox","id":"sh/hg3i1sjq","slide":1,"name":"Slide title","text":"Flight needed control,\nnot just lift","textPreview":"Flight needed control, | not just lift","textChars":36,"textLines":2,"bbox":[72,114,530,156]}
+{"kind":"shape","id":"sh/mpsz2dk3","slide":1,"name":"Title underline","bbox":[72,292,86,4]}
+{"kind":"textbox","id":"sh/7q10vi1o","slide":1,"name":"Slide description","text":"A machine could rise into the air. The harder problem was keeping it balanced and steering it safely.","textPreview":"A machine could rise into the air. The harder problem was keeping it balanced and steering it safely.","textChars":101,"textLines":1,"bbox":[72,326,500,142]}
+{"kind":"textbox","id":"sh/9sjix8ju","slide":1,"name":"Slide number","text":"01 / 05","textPreview":"01 / 05","textChars":7,"textLines":1,"bbox":[1088,660,120,26]}
+{"kind":"image","id":"im/t0n61kv2","slide":1,"name":"","geometry":"rect","alt":"The Wright brothers studying a model glider in their workshop","bbox":[644,118,564,420]}
+{"kind":"notes","id":"nt/d0ur4d","slide":1,"text":"Historical context: The Wright brothers approached flight as a control problem as well as a problem of lift and power. Source: National Park Service, Wright Brothers, https://www.nps.gov/articles/wright-brothers.htm"}
+{"kind":"slide","id":"sl/9vvobj","slide":2,"title":"THE EXPERIMENTS","textShapes":4}
+{"kind":"shape","id":"sh/etwnq5g7","slide":2,"name":"Accent rule","bbox":[0,0,12,720]}
+{"kind":"textbox","id":"sh/1gnm10fi","slide":2,"name":"Section","text":"THE EXPERIMENTS","textPreview":"THE EXPERIMENTS","textChars":15,"textLines":1,"bbox":[72,58,490,26]}
+{"kind":"textbox","id":"sh/0fe5svyx","slide":2,"name":"Slide title","text":"They learned by\nflying gliders","textPreview":"They learned by | flying gliders","textChars":30,"textLines":2,"bbox":[72,114,530,156]}
+{"kind":"shape","id":"sh/nip43axo","slide":2,"name":"Title underline","bbox":[72,292,86,4]}
+{"kind":"textbox","id":"sh/mhwnu5g3","slide":2,"name":"Slide description","text":"At Kitty Hawk, repeated glides gave Wilbur and Orville practical flying skill and exposed what their designs could not yet do.","textPreview":"At Kitty Hawk, repeated glides gave Wilbur and Orville practical flying skill and exposed what their designs could not yet do.","textChars":126,"textLines":1,"bbox":[72,326,500,142]}
+{"kind":"textbox","id":"sh/ojy5wfy9","slide":2,"name":"Slide number","text":"02 / 05","textPreview":"02 / 05","textChars":7,"textLines":1,"bbox":[1088,660,120,26]}
+{"kind":"image","id":"im/onm1kn6l","slide":2,"name":"","geometry":"rect","alt":"A Wright glider in a test flight above the Kitty Hawk dunes","bbox":[644,118,564,420]}
+{"kind":"notes","id":"nt/9vvobj","slide":2,"text":"The brothers conducted extensive glider experiments at the Outer Banks before powered flight. Source: National Park Service, The First Flight, https://www.nps.gov/wrbr/learn/historyculture/thefirstflight.htm"}
+{"kind":"slide","id":"sl/9oo0pg","slide":3,"title":"THE BREAKTHROUGH","textShapes":4}
+{"kind":"shape","id":"sh/gvu5wzex","slide":3,"name":"Accent rule","bbox":[0,0,12,720]}
+{"kind":"textbox","id":"sh/fu14nudc","slide":3,"name":"Section","text":"THE BREAKTHROUGH","textPreview":"THE BREAKTHROUGH","textChars":16,"textLines":1,"bbox":[72,58,490,26]}
+{"kind":"textbox","id":"sh/uts3upwr","slide":3,"name":"Slide title","text":"A wind tunnel turned\nguesswork into data","textPreview":"A wind tunnel turned | guesswork into data","textChars":40,"textLines":2,"bbox":[72,114,530,156]}
+{"kind":"shape","id":"sh/tsjmlkv6","slide":3,"name":"Title underline","bbox":[72,292,86,4]}
+{"kind":"textbox","id":"sh/sralsfe1","slide":3,"name":"Slide description","text":"Their own tests showed that published lift figures were unreliable. A small wind tunnel let them compare wing shapes and design with evidence.","textPreview":"Their own tests showed that published lift figures were unreliable. A small wind tunnel let them compare wing shapes and design with evid...","textChars":142,"textLines":1,"bbox":[72,326,500,142]}
+{"kind":"textbox","id":"sh/6ps3q5wv","slide":3,"name":"Slide number","text":"03 / 05","textPreview":"03 / 05","textChars":7,"textLines":1,"bbox":[1088,660,120,26]}
+{"kind":"image","id":"im/ut8bedo3","slide":3,"name":"","geometry":"rect","alt":"The Wright brothers testing wing models in a small wooden wind tunnel","bbox":[644,118,564,420]}
+{"kind":"notes","id":"nt/9oo0pg","slide":3,"text":"The Wrights built a small wind tunnel after concluding that existing lift tables were inaccurate. Source: National Park Service, The First Flight, https://www.nps.gov/wrbr/learn/historyculture/thefirstflight.htm"}
+{"kind":"slide","id":"sl/96sdx0","slide":4,"title":"THE FIRST FLIGHT","textShapes":8}
+{"kind":"shape","id":"sh/qdk3idc7","slide":4,"name":"Accent rule","bbox":[0,0,12,720]}
+{"kind":"textbox","id":"sh/d0vmd8by","slide":4,"name":"Section","text":"THE FIRST FLIGHT","textPreview":"THE FIRST FLIGHT","textChars":16,"textLines":1,"bbox":[72,58,490,26]}
+{"kind":"textbox","id":"sh/sf2lk3ud","slide":4,"name":"Slide title","text":"December 17, 1903\nKitty Hawk, North Carolina","textPreview":"December 17, 1903 | Kitty Hawk, North Carolina","textChars":44,"textLines":2,"bbox":[72,114,530,156]}
+{"kind":"shape","id":"sh/f2d4fit4","slide":4,"name":"Title underline","bbox":[72,292,86,4]}
+{"kind":"textbox","id":"sh/e143mdcj","slide":4,"name":"Slide description","text":"Orville piloted the first successful powered flight. The brothers made four flights that morning, improving their distance each time.","textPreview":"Orville piloted the first successful powered flight. The brothers made four flights that morning, improving their distance each time.","textChars":133,"textLines":1,"bbox":[72,326,500,142]}
+{"kind":"textbox","id":"sh/03mlonup","slide":4,"name":"First flight duration","text":"12","textPreview":"12","textChars":2,"textLines":1,"bbox":[650,480,210,88]}
+{"kind":"textbox","id":"sh/v69k3etk","slide":4,"name":"Duration label","text":"SECONDS","textPreview":"SECONDS","textChars":7,"textLines":1,"bbox":[655,565,200,28]}
+{"kind":"shape","id":"sh/u503atcf","slide":4,"name":"Metric divider","bbox":[876,485,2,92]}
+{"kind":"textbox","id":"sh/svu5cze9","slide":4,"name":"First flight distance","text":"120","textPreview":"120","textChars":3,"textLines":1,"bbox":[912,480,240,88]}
+{"kind":"textbox","id":"sh/tw36l4vu","slide":4,"name":"Distance label","text":"FEET","textPreview":"FEET","textChars":4,"textLines":1,"bbox":[918,565,180,28]}
+{"kind":"textbox","id":"sh/6tcna9w3","slide":4,"name":"Slide number","text":"04 / 05","textPreview":"04 / 05","textChars":7,"textLines":1,"bbox":[1088,660,120,26]}
+{"kind":"image","id":"im/8r25ofql","slide":4,"name":"","geometry":"rect","alt":"The Wright Flyer rising above its launch rail as Wilbur runs alongside","bbox":[644,72,564,365]}
+{"kind":"notes","id":"nt/96sdx0","slide":4,"text":"The first flight lasted 12 seconds and covered 120 feet; four powered flights took place that day. Sources: Smithsonian National Air and Space Museum, 1903 Wright Flyer, https://airandspace.si.edu/collection-objects/wright-1903-flyer/nasm_A19610048000; National Park Service, Four Powered Flights, https://www.nps.gov/places/3-four-powered-flights.htm"}
+{"kind":"slide","id":"sl/5vhwxa","slide":5,"title":"THE ENDURING LESSON","textShapes":4}
+{"kind":"shape","id":"sh/p03qdk7a","slide":5,"name":"Accent rule","bbox":[0,0,12,720]}
+{"kind":"textbox","id":"sh/2xs7i5oz","slide":5,"name":"Section","text":"THE ENDURING LESSON","textPreview":"THE ENDURING LESSON","textChars":19,"textLines":1,"bbox":[72,58,490,26]}
+{"kind":"textbox","id":"sh/ny18bapk","slide":5,"name":"Slide title","text":"Progress came from\nlearning what failed","textPreview":"Progress came from | learning what failed","textChars":39,"textLines":2,"bbox":[72,114,530,156]}
+{"kind":"shape","id":"sh/cnupof61","slide":5,"name":"Title underline","bbox":[72,292,86,4]}
+{"kind":"textbox","id":"sh/xo3qhk7m","slide":5,"name":"Slide description","text":"They tested, measured, and redesigned before adding an engine. Careful evidence and steady iteration made controlled flight possible.","textPreview":"They tested, measured, and redesigned before adding an engine. Careful evidence and steady iteration made controlled flight possible.","textChars":133,"textLines":1,"bbox":[72,326,500,142]}
+{"kind":"textbox","id":"sh/bml8fupg","slide":5,"name":"Slide number","text":"05 / 05","textPreview":"05 / 05","textChars":7,"textLines":1,"bbox":[1088,660,120,26]}
+{"kind":"image","id":"im/b2pkjulw","slide":5,"name":"","geometry":"rect","alt":"The early Wright Flyer on the beach, with a modern airliner crossing the distant sky","bbox":[644,118,564,420]}
+{"kind":"notes","id":"nt/5vhwxa","slide":5,"text":"The Wrights used wind tunnel research and flight testing as design tools, establishing a foundation for aeronautical engineering. Source: Smithsonian National Air and Space Museum, 1903 Wright Flyer, https://airandspace.si.edu/collection-objects/wright-1903-flyer/nasm_A19610048000"}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f5">
+  <meta name="description" content="Estimate the monthly time your team could get back with BudgetSight agent workflows.">
+  <title>BudgetSight — Give your team time back</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="BudgetSight home"><span class="brand-mark" aria-hidden="true">b</span><span>budgetsight</span></a>
+    <nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#calculator">ROI calculator</a><a class="nav-cta" href="#calculator">See your estimate <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> THE WORK BEHIND THE WORK, HANDLED</p>
+        <h1 id="hero-title">Give your team<br>their time <span>back.</span></h1>
+        <p class="hero-description">BudgetSight agents take care of repeatable finance work, so your people can focus on the decisions that move your business forward.</p>
+        <a class="primary-button" href="#calculator">Calculate your potential <span aria-hidden="true">↓</span></a>
+        <div class="trust-note"><span class="avatar-stack" aria-hidden="true"><i>J</i><i>M</i><i>A</i></span><span>Built for teams that have better things to do.</span></div>
+      </div>
+      <div class="hero-visual" aria-label="Illustration of a finance workflow becoming more efficient">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="spark spark-a">✳</div><div class="spark spark-b">✦</div>
+        <div class="flow-card card-input"><span class="mini-icon mint">↗</span><div><b>Monthly close</b><small>12 tasks in progress</small></div><span class="status-dot"></span></div>
+        <div class="flow-card card-agent"><div class="agent-emblem"><span>✳</span></div><b>BudgetSight<br>agent</b><span class="agent-caption">working in the background</span></div>
+        <div class="flow-card card-output"><span class="mini-icon lilac">✓</span><div><b>Ready for review</b><small>Reconciled · 2 min ago</small></div><span class="check-mark">✓</span></div>
+        <div class="time-chip"><span>↗</span><div><b>More time</b><small>for meaningful work</small></div></div>
+      </div>
+    </section>
+    <section class="proof-strip" aria-label="BudgetSight benefits"><div><span class="proof-icon">✳</span><p><b>Less busywork</b><small>Routine steps run on autopilot</small></p></div><div><span class="proof-icon">◎</span><p><b>Human in control</b><small>Review and approve with confidence</small></p></div><div><span class="proof-icon">↗</span><p><b>More capacity</b><small>Make room for higher-value work</small></p></div></section>
+    <section id="how-it-works" class="how-section"><div class="section-heading"><p class="eyebrow">A BETTER WAY TO WORK</p><h2>Let agents handle the repeatable.</h2><p>Put dependable workflows to work across your finance operations.</p></div><div class="steps"><article><span>01</span><h3>Choose the work</h3><p>Start with the recurring tasks that keep your team busy.</p></article><article><span>02</span><h3>Set the guardrails</h3><p>Define the checks, approvals, and handoffs that matter.</p></article><article><span>03</span><h3>Get time back</h3><p>See completed work clearly, with people always in control.</p></article></div></section>
+    <section id="calculator" class="calculator-section" aria-labelledby="calc-title">
+      <div class="calc-intro"><p class="eyebrow"><span class="eyebrow-dot"></span> YOUR BACK-OF-THE-ENVELOPE ESTIMATE</p><h2 id="calc-title">What could your team do with more time?</h2><p>Adjust the numbers to see an illustrative monthly estimate. Your actual results will depend on the work and workflows you automate.</p><div class="assumption-card"><span aria-hidden="true">ⓘ</span><p><b>How we estimate</b><br>Each successful run is assumed to replace one task that takes the average minutes you enter. Incomplete runs count as zero time saved. This is a directional estimate, not a performance guarantee.</p></div></div>
+      <div class="calculator-card">
+        <div class="fields">
+          <div class="field"><label for="runs">Agent runs per month</label><div class="input-wrap"><input id="runs" name="runs" type="number" min="0" max="1000000" step="1" value="1200" inputmode="numeric"><span>runs</span></div><small>How many tasks could agents handle?</small></div>
+          <div class="field"><label for="minutes">Average task time</label><div class="input-wrap"><input id="minutes" name="minutes" type="number" min="0" max="100000" step="1" value="15" inputmode="numeric"><span>minutes</span></div><small>How long does each task take today?</small></div>
+          <div class="field"><label for="incomplete">Incomplete-run rate</label><div class="input-wrap"><input id="incomplete" name="incomplete" type="number" min="0" max="100" step="1" value="8" inputmode="decimal"><span>%</span></div><small>Runs that need follow-up or rework.</small></div>
+        </div>
+        <div class="result" aria-live="polite" aria-atomic="true"><div><p class="result-label">ESTIMATED TIME SAVED / MONTH</p><output id="hours-saved" for="runs minutes incomplete">276</output><span class="result-unit">hours</span><p id="result-detail" class="result-detail">About 6.9 workweeks returned to your team.</p></div><div class="result-art" aria-hidden="true"><span>⌁</span><i></i><i></i><i></i></div></div>
+        <p id="input-error" class="input-error" role="alert" hidden>Enter non-negative numbers. Incomplete-run rate must be between 0 and 100%.</p>
+        <p class="calc-footnote">Illustrative only · Assumes 40 hours per workweek · No labor-cost savings included</p>
+      </div>
+    </section>
+    <section class="closing"><p class="eyebrow">MAKE ROOM FOR WHAT’S NEXT</p><h2>Less routine. More room to think.</h2><a class="primary-button" href="#calculator">Explore your estimate <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">b</span><span>budgetsight</span></a><p>More clarity for the work that matters.</p><small>© 2025 BudgetSight · Illustrative demo</small></footer>
+</body>
+</html>

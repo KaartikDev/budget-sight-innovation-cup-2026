@@ -9,6 +9,7 @@
     "test": "node --test test/*.test.js",
     "seed-user": "node src/seed-user.js",
     "seed-defaults": "node src/seed-defaults.js",
+    "demo:workloads": "node src/run-demo-workloads.js",
     "extract:backfill": "node src/backfill-features.js"
   },
   "dependencies": {

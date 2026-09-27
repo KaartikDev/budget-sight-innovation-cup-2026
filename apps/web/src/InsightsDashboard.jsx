@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { api } from "./api.js";
-import { WORKLOAD_TYPES } from "./reportingTaxonomy.js";
+import { ACTION_TYPES, WORKLOAD_TYPES } from "./reportingTaxonomy.js";
 
 const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
 const compact = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
@@ -235,7 +235,10 @@ function WorkloadRadar({ groups, selected, onSelect }) {
     ...manuallyAdded.map((workload) => ({ workload, total: 0, outcomes: emptyOutcomes() })),
   ];
   const visibleWorkloads = visibleGroups.map((group) => group.workload);
-  const available = WORKLOAD_TYPES.filter((workload) => !visibleWorkloads.includes(workload));
+  // Reporting can contain model-generated or manually seeded workload labels
+  // outside the built-in taxonomy. Keep those available in the radar editor too.
+  const allWorkloads = [...new Set([...WORKLOAD_TYPES, ...ACTION_TYPES, ...groups.map((group) => group.workload), ...addedWorkloads])].sort();
+  const available = allWorkloads.filter((workload) => !visibleWorkloads.includes(workload));
   const chosenWorkload = pendingWorkload === CUSTOM_WORKLOAD_OPTION || available.includes(pendingWorkload) ? pendingWorkload : CUSTOM_WORKLOAD_OPTION;
   const normalizedCustom = normalizeWorkload(customWorkload);
   const workloadToAdd = chosenWorkload === CUSTOM_WORKLOAD_OPTION ? normalizedCustom : chosenWorkload;

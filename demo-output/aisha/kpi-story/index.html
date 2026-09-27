@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta name="description" content="A quick, accessible guide to five BudgetSight Insights metrics, with an illustrative sample.">
+  <title>Read the work behind the numbers — BudgetSight Insights</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f5f1; --card: #fffefa; --ink: #192b29; --muted: #596966;
+      --line: #dce4df; --green: #176b54; --green-soft: #e5f3eb; --amber: #985627;
+      --amber-soft: #fff1dd; --blue: #315f79; --shadow: 0 22px 60px #19332912;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: clamp(20px, 5vw, 64px); color: var(--ink); background: var(--paper); }
+    .story { width: min(100%, 1040px); margin: 0 auto; overflow: hidden; background: var(--card); border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow); }
+    .masthead { display:flex; align-items:center; justify-content:space-between; gap:20px; padding: 22px clamp(22px, 5vw, 56px); border-bottom:1px solid var(--line); }
+    .brand { display:flex; gap:10px; align-items:center; font-size:.78rem; font-weight:800; letter-spacing:.11em; }
+    .mark { display:grid; place-items:center; width:30px; height:30px; border-radius:9px; color:white; background:var(--green); font-size:.9rem; letter-spacing:0; }
+    .scope { color:var(--muted); font-size:.78rem; }
+    .intro { padding: clamp(30px, 7vw, 72px) clamp(22px, 7vw, 76px) 32px; background: radial-gradient(ellipse at 100% 0%, #eaf4eb 0, transparent 42%); }
+    .eyebrow { margin:0 0 15px; color:var(--green); font-size:.72rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { max-width:700px; margin:0; font-size:clamp(2.25rem, 6vw, 4.4rem); line-height:.99; letter-spacing:-.055em; }
+    .dek { max-width:620px; margin:20px 0 0; color:var(--muted); font-size:clamp(1rem, 2vw, 1.16rem); line-height:1.65; }
+    .sample { margin: 0 clamp(16px, 4vw, 44px); padding: 23px clamp(18px, 4vw, 36px) 25px; border:1px solid #cfe0d4; border-radius:18px; background:#f2f8f2; }
+    .sample-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:18px; }
+    .sample h2 { margin:0; font-size:1rem; letter-spacing:-.02em; }
+    .badge { padding:6px 10px; border-radius:999px; color:#315b48; background:#e0eee2; font-size:.69rem; font-weight:800; letter-spacing:.04em; text-transform:uppercase; }
+    .metrics { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:10px; }
+    .metric { min-width:0; padding:14px 14px 13px; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+    .metric dt { min-height:2.5em; color:var(--muted); font-size:.75rem; font-weight:650; line-height:1.3; }
+    .metric dd { margin:8px 0 0; font-size:clamp(1.25rem, 2.5vw, 1.75rem); font-weight:780; letter-spacing:-.045em; font-variant-numeric:tabular-nums; }
+    .metric small { display:block; margin-top:5px; color:var(--muted); font-size:.68rem; }
+    .sample-note { margin:14px 0 0; color:var(--muted); font-size:.76rem; line-height:1.5; }
+    .reading { padding:34px clamp(22px, 7vw, 76px) 40px; }
+    .reading h2 { margin:0 0 19px; font-size:1.25rem; letter-spacing:-.03em; }
+    .guide { display:grid; grid-template-columns:1fr 1fr; gap:0 36px; margin:0; padding:0; list-style:none; counter-reset:metric; }
+    .guide li { position:relative; min-height:110px; padding:19px 0 18px 44px; border-top:1px solid var(--line); counter-increment:metric; }
+    .guide li::before { content:counter(metric, decimal-leading-zero); position:absolute; top:20px; left:0; color:var(--green); font-size:.72rem; font-weight:800; letter-spacing:.04em; }
+    .guide h3 { margin:0 0 6px; font-size:.94rem; }
+    .guide p { margin:0; color:var(--muted); font-size:.83rem; line-height:1.55; }
+    .guide strong { color:var(--ink); }
+    .takeaway { display:flex; gap:15px; align-items:flex-start; margin:0 clamp(22px, 7vw, 76px) 32px; padding:18px 20px; border-left:3px solid #cf8a43; border-radius:0 12px 12px 0; background:var(--amber-soft); }
+    .takeaway-mark { flex:0 0 auto; color:var(--amber); font-weight:900; }
+    .takeaway p { margin:0; color:#60452f; font-size:.82rem; line-height:1.55; }
+    footer { display:flex; justify-content:space-between; gap:12px; padding:17px clamp(22px, 5vw, 56px); border-top:1px solid var(--line); color:var(--muted); font-size:.7rem; }
+    :focus-visible { outline:3px solid #317d66; outline-offset:4px; }
+    @media (max-width:720px) { .metrics { grid-template-columns:repeat(2, minmax(0,1fr)); } .metric:last-child { grid-column:span 2; } .metric dt { min-height:0; } }
+    @media (max-width:520px) { body { padding:12px; } .story { border-radius:17px; } .masthead { align-items:flex-start; flex-direction:column; gap:7px; padding:17px 20px; } .intro { padding-top:35px; } .guide { grid-template-columns:1fr; } .guide li { min-height:0; } footer { flex-direction:column; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+    @media (prefers-contrast: more) { :root { --muted:#394945; --line:#aabbb2; } }
+  </style>
+</head>
+<body>
+  <main class="story" aria-labelledby="story-title">
+    <header class="masthead">
+      <div class="brand"><span class="mark" aria-hidden="true">B</span><span>BUDGETSIGHT <span aria-hidden="true">/</span> INSIGHTS</span></div>
+      <span class="scope">A field guide to five metrics</span>
+    </header>
+    <section class="intro">
+      <p class="eyebrow">Read the work behind the numbers</p>
+      <h1 id="story-title">Five signals.<br>One clearer picture.</h1>
+      <p class="dek">Spend shows the estimated cost. Tokens and cache show usage mix. Outcomes show what that spend delivered. Read them together before drawing a conclusion.</p>
+    </section>
+    <section class="sample" aria-labelledby="sample-title">
+      <div class="sample-head"><h2 id="sample-title">A sample week</h2><span class="badge">Illustrative data</span></div>
+      <dl class="metrics">
+        <div class="metric"><dt>Measured spend</dt><dd>$18.42</dd><small>estimated USD</small></div>
+        <div class="metric"><dt>Total tokens</dt><dd>2.84M</dd><small>input + output</small></div>
+        <div class="metric"><dt>Prompt cache</dt><dd>64%</dd><small>of input tokens</small></div>
+        <div class="metric"><dt>Incomplete spend</dt><dd>$3.10</dd><small>partial + failed turns</small></div>
+        <div class="metric"><dt>Completed</dt><dd>42</dd><small>normalized turns</small></div>
+      </dl>
+      <p class="sample-note">Example only—not live account data. Values represent one selected reporting window; use the same filters and dates when comparing.</p>
+    </section>
+    <section class="reading" aria-labelledby="reading-title">
+      <h2 id="reading-title">How to read each signal</h2>
+      <ol class="guide">
+        <li><h3>Measured spend</h3><p>Sum of estimated turn costs in USD. Use it to compare activity in BudgetSight; it is an <strong>API-rate estimate, not a subscription invoice.</strong></p></li>
+        <li><h3>Total tokens</h3><p>Recorded input plus output tokens. More tokens mean more context or generation; pair volume with outcomes and duration before judging efficiency.</p></li>
+        <li><h3>Prompt cache</h3><p>Cached input divided by all input. A higher rate can reduce eligible input cost when context repeats, but <strong>doesn’t tell you whether the work succeeded.</strong></p></li>
+        <li><h3>Incomplete spend</h3><p>Spend tied to partially completed or failed turns. Check the affected turns and evidence; <strong>unknown outcomes are excluded</strong> because they signal missing confidence.</p></li>
+        <li><h3>Completed</h3><p>Count of turns classified as completed. Compare with all analyzed turns to understand the mix; <strong>a count alone is not a completion rate.</strong></p></li>
+      </ol>
+    </section>
+    <aside class="takeaway" aria-label="Interpretation tip"><span class="takeaway-mark" aria-hidden="true">↗</span><p><strong>Start with the relationship:</strong> if spend rises, check whether token volume also rose—and whether completed work rose with it. Treat a pattern as a prompt to review the underlying turns, not proof of waste.</p></aside>
+    <footer><span>BudgetSight Insights</span><span>Same window · same filters · better comparisons</span></footer>
+  </main>
+</body>
+</html>

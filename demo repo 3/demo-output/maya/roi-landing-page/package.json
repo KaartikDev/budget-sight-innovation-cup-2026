@@ -1,0 +1,6 @@
+{
+  "name": "budgetsight-roi-landing-page",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test" }
+}

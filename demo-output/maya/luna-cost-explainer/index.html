@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4ee">
+  <meta name="description" content="A clear, interactive guide to Luna token costs and spend caps.">
+  <title>Luna costs, made clear</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#top" aria-label="Luna cost guide home"><span class="brand-mark" aria-hidden="true">L</span> LUNA / FIELD GUIDE</a><span class="top-note">A practical guide to token spend</span></header>
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow">THE TOKEN BILL, DECODED <span>01 — 04</span></p>
+      <h1>Every token<br>has a <em>different</em> job.</h1>
+      <p class="intro">Luna’s usage cost comes down to what goes in, what can be reused, and what comes back out. Here’s the short version—and a calculator to make it concrete.</p>
+      <a class="text-link" href="#calculator">Explore the example <span aria-hidden="true">↓</span></a>
+      <div class="hero-stamp" aria-hidden="true"><span>INPUT</span><b>→</b><span>LUNA</span><b>→</b><span>OUTPUT</span></div>
+    </section>
+
+    <section class="concepts" aria-label="The four cost concepts">
+      <article class="concept"><div class="concept-head"><span class="number">01</span><span class="glyph" aria-hidden="true">↘</span></div><h2>Uncached input</h2><p>New context Luna needs to read: your prompt, fresh files, and instructions. It’s billed at the standard input rate.</p><span class="tag">NEW CONTEXT</span></article>
+      <article class="concept"><div class="concept-head"><span class="number">02</span><span class="glyph" aria-hidden="true">↻</span></div><h2>Cached input</h2><p>Repeated context that can be reused, such as a stable system prompt. When cache pricing applies, these tokens cost less to process.</p><span class="tag">REUSED CONTEXT</span></article>
+      <article class="concept"><div class="concept-head"><span class="number">03</span><span class="glyph" aria-hidden="true">↗</span></div><h2>Output tokens</h2><p>The response Luna generates. Output is often priced separately from input, so a long answer can move the total quickly.</p><span class="tag">GENERATED TEXT</span></article>
+      <article class="concept cap-card"><div class="concept-head"><span class="number">04</span><span class="glyph" aria-hidden="true">⊣</span></div><h2>Spend caps</h2><p>A budget guardrail for a time period or workspace. A cap helps prevent runaway spend; check Luna’s settings to see whether it blocks, alerts, or pauses usage.</p><span class="tag">SET A LIMIT</span></article>
+    </section>
+
+    <section class="calculator" id="calculator" aria-labelledby="calc-title">
+      <div class="calc-copy"><p class="eyebrow">TRY A SCENARIO <span>LIVE ESTIMATE</span></p><h2 id="calc-title">A little context.<br>A useful answer.</h2><p>Adjust the token mix and rates to see how cached input, fresh input, and output combine.</p>
+        <div class="formula" aria-label="Estimated cost formula">(fresh input × input rate) + (cached input × cache rate) + (output × output rate)</div>
+        <p class="disclaimer">Example rates below are illustrative, in USD per 1 million tokens—not official Luna pricing. Replace them with the rates for your Luna plan. Estimate excludes any other fees.</p>
+      </div>
+      <form class="calc-panel" id="cost-form">
+        <div class="field-grid">
+          <label>Uncached input <span class="unit">tokens</span><input name="uncached" type="number" min="0" step="100" value="12000" inputmode="numeric"></label>
+          <label>Cached input <span class="unit">tokens</span><input name="cached" type="number" min="0" step="100" value="8000" inputmode="numeric"></label>
+          <label>Output <span class="unit">tokens</span><input name="output" type="number" min="0" step="100" value="3000" inputmode="numeric"></label>
+        </div>
+        <div class="rate-heading"><span>Example rate <small>USD / 1M tokens</small></span><span>EDIT RATE</span></div>
+        <div class="rate-grid">
+          <label>Uncached input rate<input name="inputRate" type="number" min="0" step="0.01" value="3.00" inputmode="decimal"></label>
+          <label>Cached input rate<input name="cacheRate" type="number" min="0" step="0.01" value="0.30" inputmode="decimal"></label>
+          <label>Output rate<input name="outputRate" type="number" min="0" step="0.01" value="15.00" inputmode="decimal"></label>
+        </div>
+        <div class="result" aria-live="polite" aria-atomic="true"><div><span>Estimated cost</span><small>For this request</small></div><output id="total" for="cost-form">$0.10</output></div>
+        <p class="breakdown" id="breakdown">Input $0.04 <span>·</span> Cache $0.00 <span>·</span> Output $0.05</p>
+      </form>
+    </section>
+    <section class="takeaway"><span class="takeaway-mark" aria-hidden="true">↗</span><p><strong>Want a calmer bill?</strong> Reuse stable context where caching is supported, keep generated answers focused, and set a cap that fits your budget.</p><a href="#top" class="back-link">Back to top ↑</a></section>
+  </main>
+  <footer><span>LUNA / FIELD GUIDE</span><span>Clear inputs. Clearer costs.</span></footer>
+</body>
+</html>

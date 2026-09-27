@@ -1,0 +1,13 @@
+{
+  "window": { "from": "2026-09-20T00:00:00.000Z", "to": "2026-09-27T00:00:00.000Z", "bucket": "day", "dataAsOf": "2026-09-27T18:00:00.000Z" },
+  "summary": {
+    "turns": 12,
+    "spendMicros": 2840000,
+    "totalTokens": 384200,
+    "outcomes": { "completed": 8, "partial_completion": 2, "failed": 1, "unknown": 1 }
+  },
+  "dataQuality": { "unknownOutcomes": 1, "missingUsage": 1, "incompleteSources": 0, "pendingExtraction": 1, "failedExtraction": 0 },
+  "opportunities": [
+    { "id": "validation-gaps", "type": "validation_gap", "title": "Edits often finish without final validation", "summary": "Three changed turns had no validation after the final edit." }
+  ]
+}

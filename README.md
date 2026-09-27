@@ -1,5 +1,63 @@
 # BudgetSight
 
+<p align="center">
+  <strong>Local-first visibility into AI development work.</strong><br />
+  Track Codex threads, token usage, spend, outcomes, and operational insights in one focused workspace.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-UI-61DAFB?logo=react&logoColor=111827" alt="React" />
+  <img src="https://img.shields.io/badge/Node.js-24%2B-339933?logo=node.js&logoColor=white" alt="Node.js 24+" />
+  <img src="https://img.shields.io/badge/Vite-build-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/SQLite-local--first-003B57?logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Codex-app--server-111827" alt="Codex app-server" />
+  <img src="https://img.shields.io/badge/License-private-lightgrey" alt="Private project" />
+</p>
+
+<p align="center">
+  <img src="docs/assets/budgetsight-demo.gif" alt="BudgetSight demo showing the thread workspace and analytics views" width="960" />
+</p>
+
+## What it does
+
+BudgetSight is a local-first product UI and audit layer for Codex app-server threads. It brings together the context that is usually scattered across terminals and dashboards:
+
+- Thread timelines with raw Codex events and repository context
+- Token usage, estimated Standard API spend, and per-thread dollar caps
+- Turn Intelligence for workload, tool-intent, failure, and outcome analysis
+- Insights dashboards for opportunity discovery and data-confidence signals
+- Durable SQLite storage with resumable feature extraction
+
+## Screenshots
+
+### Thread workspace
+
+![BudgetSight thread workspace](docs/assets/screenshots/thread-active.png)
+
+### Turn Intelligence
+
+![BudgetSight Turn Intelligence dashboard](docs/assets/screenshots/turn-intelligence.png)
+
+### Insights
+
+![BudgetSight Insights dashboard](docs/assets/screenshots/insights.png)
+
+### Workload outcomes
+
+![BudgetSight workload outcomes](docs/assets/screenshots/outcomes.png)
+
+## Tech stack
+
+| Layer | Technology |
+| --- | --- |
+| Frontend | React, React Router, React Markdown, Vite |
+| Backend | Node.js, Express, Codex app-server protocol |
+| Data | SQLite, durable event store, versioned reporting rows |
+| Intelligence | Deterministic feature extraction with optional Ollama (`qwen3:4b-instruct`) |
+| Quality | Node test runner, Vitest, Testing Library |
+
+---
+
 BudgetSight is a local-first product UI and audit layer for Codex app-server threads. It tracks the person, repository, thread timeline, raw Codex events, token usage, account rate-limit metadata, and an estimated per-thread dollar cap.
 
 ## Requirements
@@ -97,6 +155,23 @@ counts. Set `FEATURE_EXTRACTION_ENABLED=false` to disable automatic extraction.
 
 For a user-facing explanation of the admin Insights page, its charts, opportunity
 rules, and data-confidence signals, see [Insights documentation](docs/INSIGHTS.md).
+
+## Demo Insights workload generator
+
+Generate a repeatable Insights dataset with five named demo users and 25 Luna
+threads. The launcher runs five tasks in parallel per wave, rotates repositories
+to respect the one-active-turn-per-repository lock, and assigns caps from $0.50 to
+$2.50. Preview the matrix or run it against a local BudgetSight server with:
+
+```bash
+npm run demo:workloads -- --dry-run
+npm run demo:workloads -- --run-id=my-demo-run
+```
+
+The default per-task timebox is eight minutes. Override it with
+`DEMO_TASK_TIMEOUT_MS`; use `BUDGETSIGHT_URL` when the server is not at
+`http://127.0.0.1:4310`. Run manifests are written to
+`data/demo-workload-runs/`.
 
 ## Important security note
 
