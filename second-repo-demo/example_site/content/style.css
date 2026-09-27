@@ -1,0 +1,9 @@
+:root { color-scheme: light; font-family: system-ui, sans-serif; color: #1d2833; background: #f7f8fa; }
+body { max-width: 48rem; margin: 0 auto; padding: 2rem; line-height: 1.6; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-bottom: 1px solid #ccd4db; }
+nav { display: flex; gap: 1rem; }
+a { color: #086d7c; }
+.brand { font-weight: 700; text-decoration: none; }
+main { min-height: 55vh; }
+pre { overflow: auto; padding: 1rem; background: #e8eef1; }
+.tag { display: inline-block; margin-right: .5rem; }

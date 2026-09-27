@@ -1,0 +1,21 @@
+{
+  "name": "@budgetsight/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "@budgetsight/shared": "*",
+    "@vitejs/plugin-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "latest",
+    "remark-gfm": "^4.0.1",
+    "vite": "latest"
+  }
+}

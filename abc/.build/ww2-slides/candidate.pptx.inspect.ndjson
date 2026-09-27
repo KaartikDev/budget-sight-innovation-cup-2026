@@ -1,0 +1,100 @@
+{"kind":"deck","id":"pr/d0fwj1","name":"Deck"}
+{"kind":"layout","layoutId":"f4586c63-4d14-42e1-b4cf-3441f620a470","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"9118f4da-c9b1-4380-acb0-a6dadd478389","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/jyax52","slide":1,"title":"WORLD WAR II","textShapes":3}
+{"kind":"textbox","id":"sh/bql4nepo","slide":1,"text":"WORLD WAR II","textPreview":"WORLD WAR II","textChars":12,"textLines":1,"bbox":[72,180,1120,92]}
+{"kind":"textbox","id":"sh/wru5wj69","slide":1,"text":"A short history of a global conflict","textPreview":"A short history of a global conflict","textChars":36,"textLines":1,"bbox":[75,293,1050,48]}
+{"kind":"textbox","id":"sh/xs36po7u","slide":1,"text":"1939–1945","textPreview":"1939–1945","textChars":9,"textLines":1,"bbox":[75,548,600,50]}
+{"kind":"notes","id":"nt/jyax52","slide":1,"text":"Overview sources: https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf ; https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-depth"}
+{"kind":"slide","id":"sl/l8zwqj","slide":2,"title":"Origins of the war","textShapes":10}
+{"kind":"textbox","id":"sh/mhgzmxgn","slide":2,"text":"Origins of the war","textPreview":"Origins of the war","textChars":18,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/9k7yxcfe","slide":2,"text":"1919–1939","textPreview":"1919–1939","textChars":9,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/8jyho7yt","slide":2,"text":"02","textPreview":"02","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/vmpgz2x4","slide":2,"text":"1919","textPreview":"1919","textChars":4,"textLines":1,"bbox":[73,222,245,112]}
+{"kind":"textbox","id":"sh/ulgzqxgz","slide":2,"text":"Unstable peace","textPreview":"Unstable peace","textChars":14,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/ho7y1cfa","slide":2,"text":"The Treaty of Versailles and the Great Depression deepened political and economic crisis in Europe.","textPreview":"The Treaty of Versailles and the Great Depression deepened political and economic crisis in Europe.","textChars":99,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/wnyhs7ep","slide":2,"text":"Expansion and appeasement","textPreview":"Expansion and appeasement","textChars":25,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/ja9g3mxg","slide":2,"text":"Nazi Germany rearmed and seized territory. Britain and France tried to avert another war through concessions.","textPreview":"Nazi Germany rearmed and seized territory. Britain and France tried to avert another war through concessions.","textChars":109,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/i90zuhwv","slide":2,"text":"War in Asia","textPreview":"War in Asia","textChars":11,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/w7ud8vi5","slide":2,"text":"Japan’s invasion of China in 1937 widened a conflict already underway in East Asia.","textPreview":"Japan’s invasion of China in 1937 widened a conflict already underway in East Asia.","textChars":83,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/l8zwqj","slide":2,"text":"Sources: https://www.nationalww2museum.org/war/articles/war-war-europe-1919-1939 ; https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf"}
+{"kind":"slide","id":"sl/ya52kz","slide":3,"title":"Axis expansion in Europe","textShapes":10}
+{"kind":"textbox","id":"sh/up0fud8z","slide":3,"text":"Axis expansion in Europe","textPreview":"Axis expansion in Europe","textChars":24,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/hcry58rq","slide":3,"text":"1939–1941","textPreview":"1939–1941","textChars":9,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/gbixw3q5","slide":3,"text":"03","textPreview":"03","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/7mpgzy98","slide":3,"text":"1939","textPreview":"1939","textChars":4,"textLines":1,"bbox":[73,222,245,112]}
+{"kind":"textbox","id":"sh/6lgfqt83","slide":3,"text":"September 1939","textPreview":"September 1939","textChars":14,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/tory18re","slide":3,"text":"Germany invaded Poland. Britain and France declared war on Germany.","textPreview":"Germany invaded Poland. Britain and France declared war on Germany.","textChars":67,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/8nixs3qt","slide":3,"text":"1940","textPreview":"1940","textChars":4,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/jipgve9c","slide":3,"text":"Germany conquered much of Western Europe. Britain resisted German air attacks.","textPreview":"Germany conquered much of Western Europe. Britain resisted German air attacks.","textChars":78,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/yhgfmtsr","slide":3,"text":"June 1941","textPreview":"June 1941","textChars":9,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/0behcf6h","slide":3,"text":"Germany invaded the Soviet Union, opening the vast Eastern Front.","textPreview":"Germany invaded the Soviet Union, opening the vast Eastern Front.","textChars":65,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/ya52kz","slide":3,"text":"Sources: https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf ; https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-depth"}
+{"kind":"slide","id":"sl/92tj8p","slide":4,"title":"The war becomes global","textShapes":10}
+{"kind":"textbox","id":"sh/lcbe50ri","slide":4,"text":"The war becomes global","textPreview":"The war becomes global","textChars":22,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/y9kvalsr","slide":4,"text":"1941","textPreview":"1941","textChars":4,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/jatw3q9c","slide":4,"text":"04","textPreview":"04","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/8zmdgva9","slide":4,"text":"1941","textPreview":"1941","textChars":4,"textLines":1,"bbox":[73,222,245,112]}
+{"kind":"textbox","id":"sh/t0ve90ru","slide":4,"text":"Pacific war","textPreview":"Pacific war","textChars":11,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/6dkve5s3","slide":4,"text":"Japan continued expanding across East and Southeast Asia.","textPreview":"Japan continued expanding across East and Southeast Asia.","textChars":57,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/7ydw7q9o","slide":4,"text":"Pearl Harbor","textPreview":"Pearl Harbor","textChars":12,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/o3id4bap","slide":4,"text":"Japan attacked the US naval base on 7 December. The United States entered the war.","textPreview":"Japan attacked the US naval base on 7 December. The United States entered the war.","textChars":82,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/94ruxgba","slide":4,"text":"A worldwide conflict","textPreview":"A worldwide conflict","textChars":20,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/l8fqxonq","slide":4,"text":"Germany and Italy declared war on the United States days later.","textPreview":"Germany and Italy declared war on the United States days later.","textChars":63,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/92tj8p","slide":4,"text":"Sources: https://www.nationalww2museum.org/home-front-selected-chronology ; https://www.nationalww2museum.org/war/articles/pacific-strategy-1941-1944"}
+{"kind":"slide","id":"sl/7s13yv","slide":5,"title":"Turning points","textShapes":10}
+{"kind":"textbox","id":"sh/lcba14jq","slide":5,"text":"Turning points","textPreview":"Turning points","textChars":14,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/ypkbqpkf","slide":5,"text":"1942–1943","textPreview":"1942–1943","textChars":9,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/zqtszu1k","slide":5,"text":"05","textPreview":"05","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/cnitof29","slide":5,"text":"1942","textPreview":"1942","textChars":4,"textLines":1,"bbox":[73,222,245,112]}
+{"kind":"textbox","id":"sh/xoraxkju","slide":5,"text":"Midway","textPreview":"Midway","textChars":6,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/al0bm5k3","slide":5,"text":"US forces defeated a Japanese carrier fleet in June 1942 and gained momentum in the Pacific.","textPreview":"US forces defeated a Japanese carrier fleet in June 1942 and gained momentum in the Pacific.","textChars":92,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/bm9sva1o","slide":5,"text":"Stalingrad","textPreview":"Stalingrad","textChars":10,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/ojitkf2x","slide":5,"text":"The Soviet victory in February 1943 ended Germany’s offensive momentum on the Eastern Front.","textPreview":"The Soviet victory in February 1943 ended Germany’s offensive momentum on the Eastern Front.","textChars":92,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/pkratkji","slide":5,"text":"North Africa and Italy","textPreview":"North Africa and Italy","textChars":22,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/tknmpwny","slide":5,"text":"Allied advances opened a route into southern Europe.","textPreview":"Allied advances opened a route into southern Europe.","textChars":52,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/7s13yv","slide":5,"text":"Sources: https://www.nationalww2museum.org/war/articles/pacific-strategy-1941-1944 ; https://www.nationalww2museum.org/sites/default/files/2024-05/WWII_2023-Annual-Report_Digital.pdf ; https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf"}
+{"kind":"slide","id":"sl/4xm9wq","slide":6,"title":"The Holocaust","textShapes":6}
+{"kind":"textbox","id":"sh/gj698rml","slide":6,"text":"The Holocaust","textPreview":"The Holocaust","textChars":13,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/fixsfm50","slide":6,"text":"1933–1945","textPreview":"1933–1945","textChars":9,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/uhor6h4f","slide":6,"text":"06","textPreview":"06","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/pozalw32","slide":6,"text":"6 million","textPreview":"6 million","textChars":9,"textLines":1,"bbox":[72,220,1140,113]}
+{"kind":"textbox","id":"sh/4n69crmx","slide":6,"text":"Jewish people murdered","textPreview":"Jewish people murdered","textChars":22,"textLines":1,"bbox":[76,335,1030,52]}
+{"kind":"textbox","id":"sh/3mxsjmlc","slide":6,"text":"Nazi Germany and its collaborators persecuted and murdered Jews across Europe. They also targeted Roma, disabled people, Poles and others. Mass shootings and killing centers made genocide central to the war.","textPreview":"Nazi Germany and its collaborators persecuted and murdered Jews across Europe. They also targeted Roma, disabled people, Poles and others...","textChars":207,"textLines":1,"bbox":[76,441,1090,145]}
+{"kind":"notes","id":"nt/4xm9wq","slide":6,"text":"Sources: https://encyclopedia.ushmm.org/content/en/article/world-war-ii-in-depth ; https://encyclopedia.ushmm.org/content/en/article/the-final-solution"}
+{"kind":"slide","id":"sl/zofyc0","slide":7,"title":"Allied advance","textShapes":10}
+{"kind":"textbox","id":"sh/dsfmxcru","slide":7,"text":"Allied advance","textPreview":"Allied advance","textChars":14,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/q5432x83","slide":7,"text":"1944","textPreview":"1944","textChars":4,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/r6d4v29o","slide":7,"text":"07","textPreview":"07","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/43ml07qx","slide":7,"text":"1944","textPreview":"1944","textChars":4,"textLines":1,"bbox":[73,222,245,112]}
+{"kind":"textbox","id":"sh/p4vmtsri","slide":7,"text":"D-Day, 6 June","textPreview":"D-Day, 6 June","textChars":13,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/i143yx8r","slide":7,"text":"Allied forces landed in Normandy and began liberating Western Europe.","textPreview":"Allied forces landed in Normandy and began liberating Western Europe.","textChars":69,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/32d4r29c","slide":7,"text":"Eastern Front","textPreview":"Eastern Front","textChars":13,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/gz2lwnq1","slide":7,"text":"Soviet forces pushed German armies westward.","textPreview":"Soviet forces pushed German armies westward.","textChars":44,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/h0bmpsrm","slide":7,"text":"Pacific campaign","textPreview":"Pacific campaign","textChars":16,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/pgjq5oje","slide":7,"text":"Allied forces advanced toward Japan through costly island battles.","textPreview":"Allied forces advanced toward Japan through costly island battles.","textChars":66,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/zofyc0","slide":7,"text":"Sources: https://www.nationalww2museum.org/d-day-timeline ; https://www.nationalww2museum.org/war/topics/d-day-and-normandy-campaign ; https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf"}
+{"kind":"slide","id":"sl/k46jys","slide":8,"title":"The war ends","textShapes":10}
+{"kind":"textbox","id":"sh/je1o7i54","slide":8,"text":"The war ends","textPreview":"The war ends","textChars":12,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/kfapgn6p","slide":8,"text":"1945","textPreview":"1945","textChars":4,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/5gj69sna","slide":8,"text":"08","textPreview":"08","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/6hs7ixov","slide":8,"text":"1945","textPreview":"1945","textChars":4,"textLines":1,"bbox":[73,222,245,112]}
+{"kind":"textbox","id":"sh/ri1ob25g","slide":8,"text":"8 May","textPreview":"8 May","textChars":5,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/sjupk761","slide":8,"text":"Germany surrendered. Victory in Europe followed years of fighting and occupation.","textPreview":"Germany surrendered. Victory in Europe followed years of fighting and occupation.","textChars":81,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/tk3qdcnm","slide":8,"text":"August","textPreview":"August","textChars":6,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/ml8n6tor","slide":8,"text":"The United States dropped atomic bombs on Hiroshima and Nagasaki. The Soviet Union entered the war against Japan.","textPreview":"The United States dropped atomic bombs on Hiroshima and Nagasaki. The Soviet Union entered the war against Japan.","textChars":113,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/nmhozypc","slide":8,"text":"2 September","textPreview":"2 September","textChars":11,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/vylc3y5k","slide":8,"text":"Japan formally surrendered, ending World War II.","textPreview":"Japan formally surrendered, ending World War II.","textChars":48,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/k46jys","slide":8,"text":"Sources: https://www.nationalww2museum.org/war/topics/end-world-war-ii-1945 ; https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf"}
+{"kind":"slide","id":"sl/vrk6yp","slide":9,"title":"Aftermath","textShapes":10}
+{"kind":"textbox","id":"sh/upcvqhgr","slide":9,"text":"Aftermath","textPreview":"Aftermath","textChars":9,"textLines":1,"bbox":[72,48,1100,64]}
+{"kind":"textbox","id":"sh/hs3elwzi","slide":9,"text":"After 1945","textPreview":"After 1945","textChars":10,"textLines":1,"bbox":[72,131,500,36]}
+{"kind":"textbox","id":"sh/wrudsryx","slide":9,"text":"09","textPreview":"09","textChars":2,"textLines":1,"bbox":[1151,652,58,30]}
+{"kind":"textbox","id":"sh/7m1wf2hg","slide":9,"text":"1945+","textPreview":"1945+","textChars":5,"textLines":1,"bbox":[73,222,280,112]}
+{"kind":"textbox","id":"sh/mlsvmxgv","slide":9,"text":"Rebuilding and justice","textPreview":"Rebuilding and justice","textChars":22,"textLines":1,"bbox":[355,210,800,38]}
+{"kind":"textbox","id":"sh/9o3ehcz6","slide":9,"text":"Europe and Asia faced enormous destruction. War crimes trials began in Nuremberg.","textPreview":"Europe and Asia faced enormous destruction. War crimes trials began in Nuremberg.","textChars":81,"textLines":1,"bbox":[355,253,800,78]}
+{"kind":"textbox","id":"sh/8nudo7yl","slide":9,"text":"A new world order","textPreview":"A new world order","textChars":17,"textLines":1,"bbox":[355,364,800,38]}
+{"kind":"textbox","id":"sh/zi1cb2h4","slide":9,"text":"The United Nations formed in 1945 to support international peace.","textPreview":"The United Nations formed in 1945 to support international peace.","textChars":65,"textLines":1,"bbox":[355,407,800,78]}
+{"kind":"textbox","id":"sh/yhsvixgj","slide":9,"text":"Cold War divisions","textPreview":"Cold War divisions","textChars":18,"textLines":1,"bbox":[355,518,800,38]}
+{"kind":"textbox","id":"sh/4va5c7y9","slide":9,"text":"Germany came under Allied occupation as tensions grew between the Soviet Union and Western powers.","textPreview":"Germany came under Allied occupation as tensions grew between the Soviet Union and Western powers.","textChars":98,"textLines":1,"bbox":[355,561,800,78]}
+{"kind":"notes","id":"nt/vrk6yp","slide":9,"text":"Sources: https://www.un.org/en/about-us/history-of-the-un ; https://history.state.gov/countries/germany ; https://history.state.gov/milestones/1945-1952/berlin-airlift ; https://www.nationalww2museum.org/sites/default/files/2017-07/timeline-full-lesson.pdf"}
